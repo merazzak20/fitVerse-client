@@ -7,14 +7,42 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
+import { uploadImage } from "../../API/utils";
 
 const Register = () => {
   const navigate = useNavigate();
-  const { updateUserProfile, signInWithGoogle } = useAuth();
+  const { createUser, updateUserProfile, signInWithGoogle } = useAuth();
 
+  // Register with email and password
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const image = form.image.files[0];
+
+    const photoURL = await uploadImage(image);
+    console.log(photoURL);
+
+    try {
+      // Create user
+      await createUser(email, password);
+      // Update user profile
+      updateUserProfile(name, photoURL);
+      // save to database
+      navigate("/");
+      toast.success("Successfully Registered");
+    } catch (err) {
+      toast.error(err.message);
+    }
+  };
+
+  // Login with Google
   const handleGoogleSignIn = async () => {
     try {
       await signInWithGoogle();
+      // save to database
       navigate("/");
       toast.success("Successfully Logged In");
     } catch (err) {
@@ -46,7 +74,7 @@ const Register = () => {
 
           {/* Right side with form */}
           <div className="w-full md:w-1/2 h-[600px] bg-gray-100 p-10">
-            <form className="space-y-6">
+            <form onSubmit={handleRegister} className="space-y-6">
               {/* Name */}
               <div className="form-control">
                 <label className="label">
@@ -56,7 +84,7 @@ const Register = () => {
                   type="text"
                   name="name"
                   placeholder="name"
-                  className="input input-bordered rounded-none"
+                  className="input rounded-none"
                   required
                 />
               </div>
@@ -70,7 +98,7 @@ const Register = () => {
                   type="email"
                   name="email"
                   placeholder="email"
-                  className="input input-bordered rounded-none"
+                  className="input  rounded-none"
                   required
                 />
               </div>
@@ -98,7 +126,7 @@ const Register = () => {
                   type="password"
                   name="password"
                   placeholder="********"
-                  className="input input-bordered rounded-none"
+                  className="input  rounded-none"
                   required
                 />
               </div>
