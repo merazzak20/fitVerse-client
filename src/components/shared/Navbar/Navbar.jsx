@@ -26,10 +26,13 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/allArtifacts"> All Artifact</NavLink>
+        <NavLink to="/allTrainer"> Trainers</NavLink>
       </li>
       <li>
-        <NavLink to="/addArtifacts">Add Artifacts</NavLink>
+        <NavLink to="/allClasess">Clasess</NavLink>
+      </li>
+      <li>
+        <NavLink to="/register">Register</NavLink>
       </li>
     </>
   );
@@ -86,7 +89,7 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <Link to="/" className="text-2xl font-bold">
+          <Link to="/" className="text-4xl font-bold">
             Fit<span className="text-orange-500">Verse</span>
           </Link>
         </div>

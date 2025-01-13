@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { createContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -12,6 +12,7 @@ import {
 
 import axios from "axios";
 import { auth } from "../firebase/firebase.confog";
+import AuthContext from "./AuthContext";
 
 const googleProvider = new GoogleAuthProvider();
 

@@ -5,7 +5,9 @@
 html {
   scroll-behavior: smooth;
 }
-
+li a {
+  margin: 0 10px;
+}
 .active {
   border-radius: 0px;
   background: #f97316 !important;

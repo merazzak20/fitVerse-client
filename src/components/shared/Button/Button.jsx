@@ -8,11 +8,11 @@ const Button = ({ label, onClick, disabled, outline, small, icon: Icon }) => {
           relative
           disabled:opacity-70
           disabled:cursor-not-allowed
-          rounded-lg
           hover:opacity-80
           transition
           px-4
           w-full
+          rounded-none
           ${outline ? "bg-white" : "bg-orange-500"}
           ${outline ? "border-black" : "border-orange-500"}
           ${outline ? "text-black" : "text-white"}
