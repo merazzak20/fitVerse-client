@@ -14,7 +14,7 @@ const Hero = () => {
         backgroundRepeat: "no-repeat",
         backgroundAttachment: "fixed",
       }}
-      className=" top-0 absolute inset-x-0 min-h-[500px] flex items-center justify-start "
+      className=" top-0  inset-x-0 min-h-[500px] flex items-center justify-start "
     >
       <Helmet>
         <title>FitVerse | Home</title>

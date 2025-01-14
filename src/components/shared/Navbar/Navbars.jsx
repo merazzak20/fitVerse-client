@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import { IoIosLogOut } from "react-icons/io";
@@ -8,7 +8,7 @@ import userIcon from "../../../assets/user.png";
 import useAuth from "../../../hooks/useAuth";
 import Loading from "../Loading";
 
-const Navbar = () => {
+const Navbars = () => {
   const [isHovered, setIsHovered] = useState(false);
   const { user, logOut, loading } = useAuth();
 
@@ -144,4 +144,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbars;
