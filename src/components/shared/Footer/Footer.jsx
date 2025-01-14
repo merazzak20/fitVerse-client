@@ -12,7 +12,7 @@ const Footer = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className="bg-black py-5"
+      className="bg-black py-5 mt-14"
     >
       <Container>
         <footer className="footer text-neutral-content p-10 md:grid-cols-3">

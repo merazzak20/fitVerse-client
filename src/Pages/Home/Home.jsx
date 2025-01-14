@@ -4,6 +4,7 @@ import Features from "./HomeComponents/Features";
 import About from "./HomeComponents/About";
 import Classes from "./HomeComponents/Classes";
 import Feedback from "./HomeComponents/Feedback";
+import Newsletter from "./HomeComponents/Newsletter";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <About></About>
       <Classes></Classes>
       <Feedback></Feedback>
+      <Newsletter></Newsletter>
     </div>
   );
 };
