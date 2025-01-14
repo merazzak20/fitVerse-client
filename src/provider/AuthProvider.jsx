@@ -13,10 +13,12 @@ import {
 import axios from "axios";
 import { auth } from "../firebase/firebase.confog";
 import AuthContext from "./AuthContext";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
+  const axiosPublic = useAxiosPublic();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -57,24 +59,40 @@ const AuthProvider = ({ children }) => {
         currentUser?.displayName,
         currentUser?.photoURL
       );
-      if (currentUser?.email) setUser(currentUser);
-      //   if (currentUser?.email) {
-      //     setUser(currentUser);
-
-      //     // Get JWT token
-      //     await axios.post(
-      //       `${import.meta.env.VITE_API_URL}/jwt`,
-      //       {
-      //         email: currentUser?.email,
-      //       },
-      //       { withCredentials: true }
-      //     );
-      //   } else {
-      //     setUser(currentUser);
-      //     await axios.get(`${import.meta.env.VITE_API_URL}/logout`, {
-      //       withCredentials: true,
-      //     });
-      //   }
+      setUser(currentUser);
+      // if (currentUser?.email) setUser(currentUser);
+      if (currentUser?.email) {
+        // Get JWT token
+        await axiosPublic
+          .post(
+            `/jwt`,
+            {
+              email: currentUser?.email,
+            },
+            { withCredentials: true }
+          )
+          .then((res) => {
+            if (res.data.token) {
+              try {
+                console.log(res.data.token);
+                localStorage.setItem("access-token", res.data.token);
+                console.log("Token saved to localStorage");
+                setLoading(false);
+              } catch (error) {
+                console.error("Error saving token to localStorage:", error);
+              }
+            }
+          });
+      } else {
+        localStorage.removeItem("access-token");
+        setLoading(false);
+      }
+      // } else {
+      //   setUser(currentUser);
+      //   await axios.get(`${import.meta.env.VITE_API_URL}/logout`, {
+      //     withCredentials: true,
+      //   });
+      // }
       setLoading(false);
     });
     return () => {
