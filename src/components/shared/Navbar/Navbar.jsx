@@ -3,21 +3,23 @@ import { Link, NavLink } from "react-router-dom";
 
 import { IoIosLogOut } from "react-icons/io";
 import { FaRegUserCircle } from "react-icons/fa";
-import useAuth from "../../../hooks/useAuth";
 import Container from "../../Container";
+import userIcon from "../../../assets/user.png";
+import useAuth from "../../../hooks/useAuth";
+import Loading from "../Loading";
 
 const Navbar = () => {
   const [isHovered, setIsHovered] = useState(false);
-  //   const { user, logOut } = useAuth();
+  const { user, logOut, loading } = useAuth();
 
-  const handleSignOut = () => {
-    // signOutUser()
-    //   .then(() => {
-    //     // console.log("successful sign out");
-    //   })
-    //   .catch((error) => {
-    //     // console.log("failed to sign out .stay here. dont leave me alone");
-    //   });
+  const handleSignOut = async () => {
+    await logOut()
+      .then(() => {
+        // console.log("successful sign out");
+      })
+      .catch((error) => {
+        // console.log("failed to sign out .stay here. dont leave me alone");
+      });
   };
 
   const links = (
@@ -31,22 +33,26 @@ const Navbar = () => {
       <li>
         <NavLink to="/allClasess">Clasess</NavLink>
       </li>
-      <li>
-        <NavLink to="/register">Register</NavLink>
-      </li>
     </>
   );
 
+  const newUser = (
+    <div className="space-y-2">
+      <li>
+        <NavLink to="/register">Register</NavLink>
+      </li>
+      <li>
+        <NavLink to="/login">Login</NavLink>
+      </li>
+    </div>
+  );
+  if (loading) return <Loading></Loading>;
   const dropDownLinks = (
     <>
       <li>
         <h3 className="font-bold mb-2 text-[18px hover:cursor-default">
-          {/* {user?.displayName} */}
+          {user?.displayName}
         </h3>
-        {/* <Link to="/" className="justify-between">
-          Profile
-          <span className="badge">New</span>
-        </Link> */}
       </li>
       <li>
         <Link to="/myArtifacts">My Artifacts</Link>
@@ -104,29 +110,26 @@ const Navbar = () => {
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                <img
-                  className="w-10 border-2 rounded-full"
-                  alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                />
+                {user && user?.photoURL ? (
+                  <img
+                    className="w-10 border-2 rounded-full"
+                    alt="Tailwind CSS Navbar component"
+                    src={user?.photoURL}
+                  />
+                ) : (
+                  <img
+                    className="w-10 border-2 rounded-full"
+                    alt="Tailwind CSS Navbar component"
+                    src={userIcon}
+                  />
+                )}
               </div>
             </div>
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
-              <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
-              </li>
-              <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
+              {user ? dropDownLinks : newUser}
             </ul>
           </div>
         </div>

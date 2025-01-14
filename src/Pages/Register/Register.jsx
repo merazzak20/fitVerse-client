@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
-import { uploadImage } from "../../API/utils";
+import { saveUser, uploadImage } from "../../API/utils";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -27,12 +27,15 @@ const Register = () => {
 
     try {
       // Create user
-      await createUser(email, password);
+      const result = await createUser(email, password);
       // Update user profile
       updateUserProfile(name, photoURL);
       // save to database
+      await saveUser({ ...result?.user, disPlayName: name, photoURL });
       navigate("/");
-      toast.success("Successfully Registered");
+      toast.success(
+        "Successfully Registered, Now you are a Member of FitVerse"
+      );
     } catch (err) {
       toast.error(err.message);
     }
@@ -41,8 +44,10 @@ const Register = () => {
   // Login with Google
   const handleGoogleSignIn = async () => {
     try {
-      await signInWithGoogle();
+      const data = await signInWithGoogle();
       // save to database
+      await saveUser(data.user);
+      console.log(data);
       navigate("/");
       toast.success("Successfully Logged In");
     } catch (err) {
