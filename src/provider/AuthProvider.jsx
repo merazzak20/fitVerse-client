@@ -87,12 +87,7 @@ const AuthProvider = ({ children }) => {
         localStorage.removeItem("access-token");
         setLoading(false);
       }
-      // } else {
-      //   setUser(currentUser);
-      //   await axios.get(`${import.meta.env.VITE_API_URL}/logout`, {
-      //     withCredentials: true,
-      //   });
-      // }
+
       setLoading(false);
     });
     return () => {

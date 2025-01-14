@@ -23,7 +23,6 @@ const Register = () => {
     const image = form.image.files[0];
 
     const photoURL = await uploadImage(image);
-    console.log(photoURL);
 
     try {
       // Create user
@@ -31,7 +30,7 @@ const Register = () => {
       // Update user profile
       updateUserProfile(name, photoURL);
       // save to database
-      await saveUser({ ...result?.user, disPlayName: name, photoURL });
+      await saveUser({ ...result?.user, displayName: name, photoURL });
       navigate("/");
       toast.success(
         "Successfully Registered, Now you are a Member of FitVerse"
