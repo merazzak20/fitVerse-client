@@ -31,7 +31,7 @@ const Navbars = () => {
         <NavLink to="/allTrainer"> Trainers</NavLink>
       </li>
       <li>
-        <NavLink to="/allClasess">Clasess</NavLink>
+        <NavLink to="/allClasses">Clasess</NavLink>
       </li>
     </>
   );
