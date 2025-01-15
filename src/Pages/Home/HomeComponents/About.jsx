@@ -1,13 +1,12 @@
 import React from "react";
 import Container from "../../../components/Container";
-import SectionTitle from "../../../components/shared/SectionTitle";
 import aboutImg from "../../../assets/footer.jpg";
 
 const About = () => {
   return (
     <div className="my-14">
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
           <div>
             <img className="max-h-[500px] object-cover" src={aboutImg} alt="" />
           </div>

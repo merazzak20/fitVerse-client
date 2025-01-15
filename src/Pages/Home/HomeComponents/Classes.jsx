@@ -14,7 +14,6 @@ const Classes = () => {
       return data;
     },
   });
-  console.log(typeof classes[0]?.trainerId);
   if (isLoading) return <Loading></Loading>;
   console.log(classes);
   return (

@@ -1,19 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "../../components/Container";
 import { useLocation } from "react-router-dom";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../components/shared/Loading";
-import { FaClock, FaRegClock } from "react-icons/fa";
+import { FaRegClock } from "react-icons/fa";
+import Package from "./BookingComponents/Package";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Booking = () => {
+  const [selectedPackage, setSelectedPackage] = useState("Choose your package");
   const location = useLocation();
   const { slot, trainerId, trainerName } = location.state || {};
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { data: classes, isLoading } = useQuery({
     queryKey: ["classes"],
     queryFn: async () => {
-      const { data } = await axiosPublic.get(`/trainer-classes/${trainerId}`);
+      const { data } = await axiosSecure.get(`/trainer-classes/${trainerId}`);
       return data;
     },
   });
@@ -21,21 +23,53 @@ const Booking = () => {
 
   if (isLoading) return <Loading></Loading>;
   console.log(slot, trainerId, trainerName);
+  const handleJoin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const selectedPackage = form.package.value;
+    console.log(selectedPackage);
+  };
   return (
     <div className="my-14">
       <Container>
-        <div className="grid md:grid-cols-12 gap-3 mx-auto">
-          <div className="col-span-9">
-            <h1 className="text-3xl text-orange-500 font-bold">
-              {trainerName}
-            </h1>
-            <div className="text-xl font-semibold flex justify-start items-center gap-2 mt-3">
-              <FaRegClock></FaRegClock>
-              <p className="">{slot}</p>
+        <div className="grid lg:grid-cols-12 gap-3 mx-auto">
+          <div className="col-span-9 px-3">
+            <div className="flex items-center justify-evenly">
+              <div>
+                <h1 className="text-3xl text-orange-500 font-bold">
+                  {trainerName}
+                </h1>
+                <div className="text-xl font-semibold flex justify-start items-center gap-2 mt-3">
+                  <FaRegClock></FaRegClock>
+                  <p className="">{slot}</p>
+                </div>
+              </div>
+              <div className="my-10 mt-16 mx-auto text-center">
+                <form onSubmit={handleJoin} className="flex">
+                  <select
+                    required
+                    name="package"
+                    value={selectedPackage}
+                    onChange={(e) => setSelectedPackage(e.target.value)}
+                    className="select select-bordered rounded-none w-full max-w-xs mx-5"
+                  >
+                    <option disabled>Choose your package</option>
+                    <option value="Basic">Basic</option>
+                    <option value="Standard">Standard</option>
+                    <option value="Premium">Premium</option>
+                  </select>
+                  <button className="btn rounded-none border-none bg-orange-500">
+                    Join Now!
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div className="my-8">
+              <Package></Package>
             </div>
           </div>
-          <div className="col-span-3">
-            <div className="grid grid-cols-1 gap-6 ">
+          <div className="col-span-12 md:col-span-6 lg:col-span-3 md:mt-10">
+            <div className="grid md:grid-cols-2 lg:grid-cols-1 gap-6 ">
               {classes.map((item) => (
                 <div
                   key={item._id}

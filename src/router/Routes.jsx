@@ -4,7 +4,7 @@ import MainLayout from "../layout/MainLayout";
 import Home from "../Pages/Home/Home";
 import Register from "../Pages/Register/Register.jsx";
 import Login from "../Pages/Login/Login.jsx";
-import Classes from "../Pages/AllClasses/Classes.jsx";
+import AllClasses from "../Pages/AllClasses/AllClasses.jsx";
 import AllTrainer from "../Pages/AllTrainer/AllTrainer.jsx";
 import TrainerDetails from "../Pages/AllTrainer/AllTrainerComponent/TrainerDetails.jsx";
 import Booking from "../Pages/Booking/Booking.jsx";
@@ -22,7 +22,7 @@ export const Routers = createBrowserRouter([
       },
       {
         path: "/allClasses",
-        element: <Classes></Classes>,
+        element: <AllClasses></AllClasses>,
       },
       {
         path: "/allTrainer",
