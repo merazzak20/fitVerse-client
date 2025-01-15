@@ -10,7 +10,7 @@ const TrainerDetails = () => {
   const { id } = useParams();
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
-  const { data: trainer, isLoading } = useQuery({
+  const { data: trainer } = useQuery({
     queryKey: ["trainer"],
     queryFn: async () => {
       const { data } = await axiosPublic.get(`/trainers/${id}`);
@@ -20,7 +20,9 @@ const TrainerDetails = () => {
   console.log(trainer);
   const handleBooking = (slot) => {
     console.log(slot);
-    navigate("/booking", { state: { slot } });
+    navigate("/booking", {
+      state: { slot, trainerId: trainer?._id, trainerName: trainer?.name },
+    });
   };
   return (
     <div className="my-14">

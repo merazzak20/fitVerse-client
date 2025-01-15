@@ -118,8 +118,8 @@ const Navbars = () => {
                   {user && user?.photoURL ? (
                     <img
                       className="w-10 border-2 border-orange-500 rounded-full"
-                      alt="Tailwind CSS Navbar component"
                       src={user?.photoURL}
+                      alt="Tailwind CSS Navbar component"
                     />
                   ) : (
                     <img

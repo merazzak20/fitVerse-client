@@ -8,6 +8,7 @@ import Classes from "../Pages/AllClasses/Classes.jsx";
 import AllTrainer from "../Pages/AllTrainer/AllTrainer.jsx";
 import TrainerDetails from "../Pages/AllTrainer/AllTrainerComponent/TrainerDetails.jsx";
 import Booking from "../Pages/Booking/Booking.jsx";
+import PrivateRouter from "./PrivateRouter.jsx";
 
 export const Routers = createBrowserRouter([
   {
@@ -33,7 +34,11 @@ export const Routers = createBrowserRouter([
       },
       {
         path: "/booking",
-        element: <Booking></Booking>,
+        element: (
+          <PrivateRouter>
+            <Booking></Booking>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/register",

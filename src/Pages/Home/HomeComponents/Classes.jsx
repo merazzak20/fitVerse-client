@@ -4,7 +4,6 @@ import SectionTitle from "../../../components/shared/SectionTitle";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../../components/shared/Loading";
-import { HiH1 } from "react-icons/hi2";
 
 const Classes = () => {
   const axiosPublic = useAxiosPublic();
@@ -15,8 +14,9 @@ const Classes = () => {
       return data;
     },
   });
-
+  console.log(typeof classes[0]?.trainerId);
   if (isLoading) return <Loading></Loading>;
+  console.log(classes);
   return (
     <div className="my-14">
       <Container>

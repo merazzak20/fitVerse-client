@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { saveUser } from "../../API/utils";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Container from "../../components/Container";
 import image from "../../assets/login.jpg";
 import { FcGoogle } from "react-icons/fc";
@@ -11,6 +11,7 @@ import useAuth from "../../hooks/useAuth";
 const Login = () => {
   const { signIn, signInWithGoogle } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   //   sign user
   const handleSignIn = async (e) => {
@@ -22,8 +23,8 @@ const Login = () => {
     try {
       const data = await signIn(email, password);
       console.log(data);
-      navigate("/");
       toast.success("Successfully Logged In");
+      navigate(location?.state ? location.state : "/");
     } catch (err) {
       toast.error(err.message);
     }
@@ -38,6 +39,7 @@ const Login = () => {
       console.log(data);
       navigate("/");
       toast.success("Successfully Logged In");
+      navigate(location?.state ? location.state : "/");
     } catch (err) {
       toast.error(err.message);
     }

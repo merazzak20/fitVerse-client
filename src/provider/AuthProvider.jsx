@@ -74,7 +74,7 @@ const AuthProvider = ({ children }) => {
           .then((res) => {
             if (res.data.token) {
               try {
-                console.log(res.data.token);
+                // console.log(res.data.token);
                 localStorage.setItem("access-token", res.data.token);
                 console.log("Token saved to localStorage");
                 setLoading(false);
@@ -106,7 +106,7 @@ const AuthProvider = ({ children }) => {
     logOut,
     updateUserProfile,
   };
-  console.log(user);
+  // console.log(user);
 
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
