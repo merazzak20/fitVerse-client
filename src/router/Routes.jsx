@@ -7,6 +7,7 @@ import Login from "../Pages/Login/Login.jsx";
 import Classes from "../Pages/AllClasses/Classes.jsx";
 import AllTrainer from "../Pages/AllTrainer/AllTrainer.jsx";
 import TrainerDetails from "../Pages/AllTrainer/AllTrainerComponent/TrainerDetails.jsx";
+import Booking from "../Pages/Booking/Booking.jsx";
 
 export const Routers = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ export const Routers = createBrowserRouter([
       {
         path: "/allTrainer/:id",
         element: <TrainerDetails></TrainerDetails>,
+      },
+      {
+        path: "/booking",
+        element: <Booking></Booking>,
       },
       {
         path: "/register",

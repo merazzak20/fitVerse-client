@@ -4,7 +4,7 @@ import SectionTitle from "../../components/shared/SectionTitle";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../components/shared/Loading";
-import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const AllTrainer = () => {
@@ -21,6 +21,15 @@ const AllTrainer = () => {
     navigate(`/allTrainer/${id}`);
   };
   if (isLoading) return <Loading></Loading>;
+
+  const {
+    name,
+    profileImage,
+    yearsOfExperience,
+    socialIcons: { facebook, twitter, linkedin } = {},
+    availableSlots,
+  } = trainers;
+  console.log(facebook);
   console.log(trainers);
   return (
     <div>
@@ -50,13 +59,13 @@ const AllTrainer = () => {
                   </h2>
 
                   <div className="flex gap-2 text-zinc-50 text-2xl mt-2">
-                    <a href="">
+                    <a href={trainer?.socialIcons.facebook}>
                       <FaFacebook></FaFacebook>
                     </a>
-                    <a href="">
-                      <FaInstagram></FaInstagram>
+                    <a href={trainer?.socialIcons.twitter}>
+                      <FaTwitter></FaTwitter>
                     </a>
-                    <a href="">
+                    <a href={trainer?.socialIcons.linkedin}>
                       <FaLinkedin></FaLinkedin>
                     </a>
                   </div>
