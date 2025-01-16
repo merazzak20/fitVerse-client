@@ -24,7 +24,7 @@ const useAxiosSecure = () => {
     }
   );
 
-  // Add a response interceptor
+  // Intercept 401 and 403
   axiosSecure.interceptors.response.use(
     function (response) {
       // Any status code that lie within the range of 2xx cause this function to trigger

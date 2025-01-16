@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "../../components/Container";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../components/shared/Loading";
 import { FaRegClock } from "react-icons/fa";
@@ -8,8 +8,9 @@ import Package from "./BookingComponents/Package";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Booking = () => {
-  const [selectedPackage, setSelectedPackage] = useState("Choose your package");
+  const [selectedPackage, setSelectedPackage] = useState("Standard");
   const location = useLocation();
+  const navigate = useNavigate();
   const { slot, trainerId, trainerName } = location.state || {};
   const axiosSecure = useAxiosSecure();
   const { data: classes, isLoading } = useQuery({
@@ -26,7 +27,12 @@ const Booking = () => {
   const handleJoin = (e) => {
     e.preventDefault();
     const form = e.target;
-    const selectedPackage = form.package.value;
+    if (selectedPackage) {
+      navigate("/payment", {
+        state: { slot, trainerName, selectedPackage },
+      });
+      form.reset();
+    }
     console.log(selectedPackage);
   };
   return (
