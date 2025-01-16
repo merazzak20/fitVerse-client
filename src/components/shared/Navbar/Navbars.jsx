@@ -11,6 +11,7 @@ import Loading from "../Loading";
 const Navbars = () => {
   const [isHovered, setIsHovered] = useState(false);
   const { user, logOut, loading } = useAuth();
+  console.log(user?.photoURL);
 
   const handleSignOut = async () => {
     await logOut()
@@ -55,7 +56,7 @@ const Navbars = () => {
         </h3>
       </li>
       <li>
-        <Link to="/myArtifacts">My Artifacts</Link>
+        <Link to="/dashboard">Dashboard</Link>
       </li>
       <li>
         <Link to="/likedArtifacts">Liked Artifacts</Link>

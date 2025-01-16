@@ -15,7 +15,7 @@ const Booking = () => {
   const { slot, trainerId, trainerName } = location.state || {};
   const axiosSecure = useAxiosSecure();
   const { data: classes, isLoading } = useQuery({
-    queryKey: ["classes"],
+    queryKey: ["classes", trainerId],
     queryFn: async () => {
       const { data } = await axiosSecure.get(`/trainer-classes/${trainerId}`);
       return data;

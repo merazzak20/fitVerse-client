@@ -11,6 +11,7 @@ import Booking from "../Pages/Booking/Booking.jsx";
 import PrivateRouter from "./PrivateRouter.jsx";
 import Payment from "../Pages/Payment/Payment.jsx";
 import BeATrainerPage from "../Pages/BeATrainer/BeATrainerPage.jsx";
+import Dashboard from "../layout/Dashboard.jsx";
 
 export const Routers = createBrowserRouter([
   {
@@ -67,5 +68,13 @@ export const Routers = createBrowserRouter([
         element: <Login></Login>,
       },
     ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRouter>
+        <Dashboard></Dashboard>
+      </PrivateRouter>
+    ),
   },
 ]);

@@ -5,7 +5,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Loading from "../../../components/shared/Loading";
 
 const Package = () => {
-  const asiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
   const {
     data: packages = [],
     isLoading,
@@ -14,7 +14,7 @@ const Package = () => {
   } = useQuery({
     queryKey: ["packages"],
     queryFn: async () => {
-      const { data } = await asiosSecure.get("/packages");
+      const { data } = await axiosSecure.get("/packages");
       return data;
     },
   });
