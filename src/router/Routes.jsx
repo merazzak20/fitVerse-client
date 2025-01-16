@@ -10,6 +10,7 @@ import TrainerDetails from "../Pages/AllTrainer/AllTrainerComponent/TrainerDetai
 import Booking from "../Pages/Booking/Booking.jsx";
 import PrivateRouter from "./PrivateRouter.jsx";
 import Payment from "../Pages/Payment/Payment.jsx";
+import BeATrainerPage from "../Pages/BeATrainer/BeATrainerPage.jsx";
 
 export const Routers = createBrowserRouter([
   {
@@ -46,6 +47,14 @@ export const Routers = createBrowserRouter([
         element: (
           <PrivateRouter>
             <Payment></Payment>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/beAtriner",
+        element: (
+          <PrivateRouter>
+            <BeATrainerPage></BeATrainerPage>
           </PrivateRouter>
         ),
       },

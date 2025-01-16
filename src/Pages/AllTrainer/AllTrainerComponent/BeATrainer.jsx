@@ -1,8 +1,13 @@
 import React from "react";
 import Container from "../../../components/Container";
 import heroImg from "../../../assets/hero.jpg";
+import { useNavigate } from "react-router-dom";
 
 const BeATrainer = () => {
+  const navigate = useNavigate();
+  const handleTrainer = () => {
+    navigate("/beAtriner");
+  };
   return (
     <div
       style={{
@@ -20,7 +25,10 @@ const BeATrainer = () => {
             <h2 className="text-white text-4xl font-bold mb-4">
               Are You Ready To?
             </h2>
-            <button className="btn btn-block rounded-none bg-orange-500 border-none text-zinc-50 text-lg">
+            <button
+              onClick={handleTrainer}
+              className="btn btn-block rounded-none bg-orange-500 border-none text-zinc-50 text-lg"
+            >
               Become a Trainer
             </button>
           </div>
