@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import Container from "../../../components/Container";
 import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 import BeATrainer from "./BeATrainer";
+import { Helmet } from "react-helmet-async";
 
 const TrainerDetails = () => {
   const { id } = useParams();
@@ -26,6 +27,9 @@ const TrainerDetails = () => {
   };
   return (
     <div className="my-14">
+      <Helmet>
+        <title>FitVerse | Trainer Details</title>
+      </Helmet>
       <Container>
         {/* Layout with Two Sections */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">

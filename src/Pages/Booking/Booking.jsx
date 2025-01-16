@@ -6,6 +6,7 @@ import Loading from "../../components/shared/Loading";
 import { FaRegClock } from "react-icons/fa";
 import Package from "./BookingComponents/Package";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const Booking = () => {
   const [selectedPackage, setSelectedPackage] = useState("Standard");
@@ -37,6 +38,9 @@ const Booking = () => {
   };
   return (
     <div className="my-14">
+      <Helmet>
+        <title>FitVerse | Package</title>
+      </Helmet>
       <Container>
         <div className="grid lg:grid-cols-12 gap-3 mx-auto">
           <div className="col-span-9 px-3">

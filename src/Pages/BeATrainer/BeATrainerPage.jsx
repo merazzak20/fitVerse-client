@@ -1,22 +1,37 @@
 import React, { useState } from "react";
 import Container from "../../components/Container";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
+import Select from "react-select";
+import { uploadImage } from "../../API/utils";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const BeATrainerPage = () => {
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [formData, setFormData] = useState({
-    fullName: "",
-    email: user?.email,
-    age: "",
-    profileImage: null,
+    availableTime: [],
+    availableTime: [],
     skills: [],
-    availableDays: [],
-    availableTime: "",
-    otherInfo: "",
   });
 
   const skillsOptions = ["Yoga", "Cardio", "Weightlifting", "Zumba", "Pilates"];
-  const daysOptions = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
+
+  const dayOptions = [
+    { value: "Saturday", label: "Saturday" },
+    { value: "Sunday", label: "Sunday" },
+    { value: "Monday", label: "Monday" },
+    { value: "Tuesday", label: "Tuesday" },
+    { value: "Wednesday", label: "Wednesday" },
+    { value: "Thursday", label: "Thursday" },
+    { value: "Friday", label: "Friday" },
+  ];
+  const timeOptions = [
+    { value: "06:00 AM - 08:00 AM", label: "06:00 AM - 08:00 AM" },
+    { value: "12:00 PM - 02:00 PM", label: "12:00 PM - 02:00 PM" },
+    { value: "06:00 PM - 08:00 PM", label: "06:00 PM - 08:00 PM" },
+  ];
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -28,28 +43,74 @@ const BeATrainerPage = () => {
           ? [...prev.skills, value]
           : prev.skills.filter((skill) => skill !== value),
       }));
-    } else if (type === "checkbox" && name === "availableDays") {
-      setFormData((prev) => ({
-        ...prev,
-        availableDays: checked
-          ? [...prev.availableDays, value]
-          : prev.availableDays.filter((day) => day !== value),
-      }));
-    } else if (type === "file") {
-      setFormData((prev) => ({ ...prev, [name]: e.target.files[0] }));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleTimeChange = (selectedOptions) => {
+    setFormData({
+      ...formData,
+      availableTime: selectedOptions
+        ? selectedOptions.map((option) => option.value)
+        : [],
+    });
+  };
+
+  const handleDayChange = (selectedOptions) => {
+    setFormData((prev) => ({
+      ...prev,
+      availableDay: selectedOptions
+        ? selectedOptions.map((option) => option.value)
+        : [],
+    }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data Submitted:", formData);
-    // Handle form submission logic here (e.g., send data to an API)
+    const form = e.target;
+
+    const name = form.name.value;
+    const email = user?.email;
+    const image = form.image.files[0];
+
+    const photoURL = await uploadImage(image);
+    const facebook = form.fb.value;
+    const twitter = form.twitter.value;
+    const linkedIn = form.linkedIn.value;
+    const biography = form.biography.value;
+
+    const skills = Array.from(form.skills)
+      .filter((checkbox) => checkbox.checked) // Filter only checked ones
+      .map((checkbox) => checkbox.value);
+
+    const availableTime = formData.availableTime || [];
+
+    const newTrainer = {
+      name,
+      email,
+      image: photoURL,
+      skills,
+      availableDay: formData.availableDay,
+      availableTime,
+      socialIcons: { facebook, twitter, linkedIn },
+      biography,
+      status: "pending",
+    };
+    console.log(newTrainer);
+    try {
+      await axiosSecure.post(`/new-trainrs/${email}`, newTrainer);
+      toast.success("Request Successful.👌");
+    } catch (err) {
+      toast.error(err.message);
+    }
   };
 
   return (
     <div className="my-14">
+      <Helmet>
+        <title>FitVerse | Be A Trainer</title>
+      </Helmet>
       <Container>
         <h2 className="text-3xl font-bold text-center mb-6">
           Apply to Be a Trainer
@@ -66,10 +127,10 @@ const BeATrainerPage = () => {
             <input
               type="text"
               id="fullName"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleInputChange}
+              name="name"
+              defaultValue={user?.displayName}
               className="input input-bordered w-full rounded-none"
+              placeholder="Name"
               required
             />
           </div>
@@ -83,7 +144,7 @@ const BeATrainerPage = () => {
               type="email"
               id="email"
               name="email"
-              value={formData.email}
+              value={user?.email}
               readOnly
               className="input input-bordered w-full bg-gray-100 cursor-not-allowed rounded-none"
             />
@@ -98,9 +159,8 @@ const BeATrainerPage = () => {
               type="number"
               id="age"
               name="age"
-              value={formData.age}
-              onChange={handleInputChange}
               className="input input-bordered w-full rounded-none"
+              placeholder="Age"
               min="18"
               required
             />
@@ -114,9 +174,8 @@ const BeATrainerPage = () => {
             <input
               type="file"
               id="profileImage"
-              name="profileImage"
+              name="image"
               accept="image/*"
-              onChange={handleInputChange}
               className="file-input file-input-bordered w-full rounded-none"
             />
           </div>
@@ -140,51 +199,87 @@ const BeATrainerPage = () => {
             </div>
           </div>
 
-          {/* Available Days */}
+          {/* Available Day */}
           <div>
             <label className="block font-medium mb-2">Available Days</label>
-            <div className="flex flex-wrap gap-4">
-              {daysOptions.map((day) => (
-                <label key={day} className="flex items-center space-x-2">
-                  <input
-                    type="checkbox"
-                    name="availableDays"
-                    value={day}
-                    onChange={handleInputChange}
-                    className="checkbox checkbox-accent rounded-none"
-                  />
-                  <span>{day}</span>
-                </label>
-              ))}
-            </div>
+            <Select
+              id="availableDay"
+              name="availableDay"
+              isMulti
+              options={dayOptions}
+              onChange={handleDayChange}
+              value={dayOptions.find(
+                (option) => option.value === formData.availableDay
+              )}
+              className="w-full rounded-none"
+              placeholder="Select available Days"
+            />
           </div>
 
           {/* Available Time */}
           <div>
-            <label className="block font-medium mb-2" htmlFor="availableTime">
+            <label className="block font-medium mb-2">
               Available Time in a Day
             </label>
-            <input
-              type="time"
+            <Select
               id="availableTime"
               name="availableTime"
-              value={formData.availableTime}
-              onChange={handleInputChange}
+              isMulti
+              options={timeOptions}
+              onChange={handleTimeChange}
+              value={timeOptions.find(
+                (option) => option.value === formData.availableTime
+              )}
+              className="w-full rounded-none"
+              placeholder="Select available time"
+            />
+          </div>
+
+          {/* Facebook */}
+          <div>
+            <label className="block font-medium mb-2">Facebook Link</label>
+            <input
+              type="url"
+              id="fb"
+              name="fb"
               className="input input-bordered w-full rounded-none"
+              placeholder="Facebook link"
+              required
+            />
+          </div>
+          {/* Twitter */}
+          <div>
+            <label className="block font-medium mb-2">Twitter Link</label>
+            <input
+              type="url"
+              id="twitter"
+              name="twitter"
+              className="input input-bordered w-full rounded-none"
+              placeholder="Twitter link"
+              required
+            />
+          </div>
+          {/* LinkedIn */}
+          <div>
+            <label className="block font-medium mb-2">LinkedIn Link</label>
+            <input
+              type="url"
+              id="linkedIn"
+              name="linkedIn"
+              className="input input-bordered w-full rounded-none"
+              placeholder="Twitter link"
               required
             />
           </div>
 
-          {/* Other Info */}
+          {/* Biography */}
           <div>
             <label className="block font-medium mb-2" htmlFor="otherInfo">
-              Other Info
+              Biography
             </label>
             <textarea
-              id="otherInfo"
-              name="otherInfo"
-              value={formData.otherInfo}
-              onChange={handleInputChange}
+              id="biography"
+              name="biography"
               className="textarea textarea-bordered w-full rounded-none"
               rows="4"
               placeholder="Additional details about yourself..."
