@@ -14,6 +14,7 @@ import BeATrainerPage from "../Pages/BeATrainer/BeATrainerPage.jsx";
 import Dashboard from "../layout/Dashboard.jsx";
 import AllSubscriber from "../Pages/Dashboard/Admin/AllSubscriber.jsx";
 import Profile from "../Pages/Dashboard/Common/Profile.jsx";
+import AdminAllTrainer from "../Pages/Dashboard/Admin/AdminAllTrainer.jsx";
 
 export const Routers = createBrowserRouter([
   {
@@ -87,6 +88,10 @@ export const Routers = createBrowserRouter([
       {
         path: "allSubscriber",
         element: <AllSubscriber></AllSubscriber>,
+      },
+      {
+        path: "adminAllTrainer",
+        element: <AdminAllTrainer></AdminAllTrainer>,
       },
       {
         path: "profile",

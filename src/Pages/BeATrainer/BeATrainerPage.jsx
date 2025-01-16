@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 const BeATrainerPage = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+  console.log(user);
   const [formData, setFormData] = useState({
     availableTime: [],
     availableTime: [],
@@ -72,6 +73,7 @@ const BeATrainerPage = () => {
 
     const name = form.name.value;
     const email = user?.email;
+    const experience = form.experience.value;
     const image = form.image.files[0];
 
     const photoURL = await uploadImage(image);
@@ -89,6 +91,7 @@ const BeATrainerPage = () => {
     const newTrainer = {
       name,
       email,
+      experience,
       image: photoURL,
       skills,
       availableDay: formData.availableDay,
@@ -177,6 +180,22 @@ const BeATrainerPage = () => {
               name="image"
               accept="image/*"
               className="file-input file-input-bordered w-full rounded-none"
+            />
+          </div>
+
+          {/* years of Experience  */}
+          <div>
+            <label className="block font-medium mb-2" htmlFor="age">
+              Experience
+            </label>
+            <input
+              type="number"
+              id="experience"
+              name="experience"
+              className="input input-bordered w-full rounded-none"
+              placeholder="Experience"
+              min="1"
+              required
             />
           </div>
 

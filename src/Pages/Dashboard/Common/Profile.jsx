@@ -31,7 +31,7 @@ const Profile = () => {
 
           {/* User ID */}
           <p className="text-lg font-medium text-gray-800 mb-4">
-            User ID: {user?._id}
+            User ID: {user?.uid}
           </p>
 
           {/* User Details */}
