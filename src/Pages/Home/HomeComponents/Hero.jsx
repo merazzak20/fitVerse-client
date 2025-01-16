@@ -3,8 +3,10 @@ import { Helmet } from "react-helmet-async";
 import heroImg from "../../../assets/hero.jpg";
 import Container from "../../../components/Container";
 import Button from "../../../components/shared/Button/Button";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <div
       style={{
@@ -24,7 +26,10 @@ const Hero = () => {
           <h1 className="text-3xl font-semibold md:text-5xl md:font-bold">
             Your Fitness Revolution Starts Here
           </h1>
-          <button className="btn btn-sm mt-4 rounded-none bg-orange-500 border-none">
+          <button
+            onClick={() => navigate("/allClasses")}
+            className="btn btn-sm mt-4 rounded-none bg-orange-500 border-none"
+          >
             Join Now!
           </button>
         </div>

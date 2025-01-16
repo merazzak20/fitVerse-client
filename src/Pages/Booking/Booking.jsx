@@ -14,7 +14,7 @@ const Booking = () => {
   const navigate = useNavigate();
   const { slot, trainerId, trainerName } = location.state || {};
   const axiosSecure = useAxiosSecure();
-  const { data: classes, isLoading } = useQuery({
+  const { data: classes = [], isLoading } = useQuery({
     queryKey: ["classes", trainerId],
     queryFn: async () => {
       const { data } = await axiosSecure.get(`/trainer-classes/${trainerId}`);
@@ -23,7 +23,6 @@ const Booking = () => {
   });
   console.log(classes);
 
-  if (isLoading) return <Loading></Loading>;
   console.log(slot, trainerId, trainerName);
   const handleJoin = (e) => {
     e.preventDefault();

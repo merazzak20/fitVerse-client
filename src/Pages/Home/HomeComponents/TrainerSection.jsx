@@ -14,7 +14,7 @@ const TrainerSection = () => {
       return data;
     },
   });
-  if (isLoading) return <Loading></Loading>;
+  if (isLoading) return;
   return (
     <div className="my-14">
       <Container>

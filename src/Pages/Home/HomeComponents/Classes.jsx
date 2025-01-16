@@ -14,7 +14,7 @@ const Classes = () => {
       return data;
     },
   });
-  if (isLoading) return <Loading></Loading>;
+  if (isLoading) return;
   console.log(classes);
   return (
     <div className="my-14">

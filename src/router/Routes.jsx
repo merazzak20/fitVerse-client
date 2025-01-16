@@ -12,6 +12,8 @@ import PrivateRouter from "./PrivateRouter.jsx";
 import Payment from "../Pages/Payment/Payment.jsx";
 import BeATrainerPage from "../Pages/BeATrainer/BeATrainerPage.jsx";
 import Dashboard from "../layout/Dashboard.jsx";
+import AllSubscriber from "../Pages/Dashboard/Admin/AllSubscriber.jsx";
+import Profile from "../Pages/Dashboard/Common/Profile.jsx";
 
 export const Routers = createBrowserRouter([
   {
@@ -59,16 +61,20 @@ export const Routers = createBrowserRouter([
           </PrivateRouter>
         ),
       },
-      {
-        path: "/register",
-        element: <Register></Register>,
-      },
-      {
-        path: "/login",
-        element: <Login></Login>,
-      },
     ],
   },
+
+  // Login and Register
+  {
+    path: "/register",
+    element: <Register></Register>,
+  },
+  {
+    path: "/login",
+    element: <Login></Login>,
+  },
+
+  // Dashboard
   {
     path: "/dashboard",
     element: (
@@ -76,5 +82,16 @@ export const Routers = createBrowserRouter([
         <Dashboard></Dashboard>
       </PrivateRouter>
     ),
+    children: [
+      // Admin Route
+      {
+        path: "allSubscriber",
+        element: <AllSubscriber></AllSubscriber>,
+      },
+      {
+        path: "profile",
+        element: <Profile></Profile>,
+      },
+    ],
   },
 ]);

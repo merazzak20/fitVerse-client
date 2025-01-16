@@ -12,7 +12,7 @@ const Package = () => {
     isError,
     refetch,
   } = useQuery({
-    queryKey: ["packages"],
+    queryKey: ["packagess"],
     queryFn: async () => {
       const { data } = await axiosSecure.get("/packages");
       return data;
