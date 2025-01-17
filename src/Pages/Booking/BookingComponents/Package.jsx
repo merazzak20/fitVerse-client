@@ -40,7 +40,7 @@ const Package = () => {
                   </li>
                 </ul>
               ))}
-              <h3 className="text-xl font-semibold  ">{pack?.price}</h3>
+              <h3 className="text-xl font-semibold  ">${pack?.price}</h3>
             </div>
           ))}
         </div>
