@@ -16,6 +16,7 @@ import AllSubscriber from "../Pages/Dashboard/Admin/AllSubscriber.jsx";
 import Profile from "../Pages/Dashboard/Common/Profile.jsx";
 import AdminAllTrainer from "../Pages/Dashboard/Admin/AdminAllTrainer.jsx";
 import PaymentHistory from "../Pages/Dashboard/Member/PaymentHistory.jsx";
+import MyBooking from "../Pages/Dashboard/Member/MyBooking.jsx";
 
 export const Routers = createBrowserRouter([
   {
@@ -99,6 +100,10 @@ export const Routers = createBrowserRouter([
       {
         path: "paymentHistory",
         element: <PaymentHistory></PaymentHistory>,
+      },
+      {
+        path: "myBooking",
+        element: <MyBooking></MyBooking>,
       },
 
       {

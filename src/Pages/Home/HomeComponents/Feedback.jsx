@@ -29,10 +29,10 @@ const Feedback = () => {
       return data;
     },
   });
-
+  console.log(feedbacks);
   if (isLoading) return;
   return (
-    <div className="my-14">
+    <div className="my-14 mb-16">
       <Container>
         <div className="text-center">
           <SectionTitle heading={"Feedback"}></SectionTitle>
@@ -52,10 +52,18 @@ const Feedback = () => {
             {feedbacks.map((feed) => (
               <SwiperSlide className="px-20" key={feed?._id}>
                 <div className=" text-center flex flex-col items-center">
+                  <img
+                    className="w-20 h-20 rounded-full border-orange-600 border-4 object-cover"
+                    src={feed?.image}
+                    alt={feed?.name}
+                  />
+                  <p className="text-2xl font-bold text-center my-3">
+                    {feed?.name}
+                  </p>
                   <p>{feed?.feedback}</p>
                   <Rating
                     style={{ maxWidth: 180 }}
-                    value={feed.star_rating}
+                    value={parseFloat(feed.star_rating)}
                     readOnly
                   />
                 </div>

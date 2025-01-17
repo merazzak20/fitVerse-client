@@ -29,7 +29,7 @@ const Booking = () => {
     const form = e.target;
     if (selectedPackage) {
       navigate("/payment", {
-        state: { slot, trainerName, selectedPackage },
+        state: { slot, trainerName, selectedPackage, trainerId, classes },
       });
       form.reset();
     }

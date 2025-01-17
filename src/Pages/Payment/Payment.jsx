@@ -15,7 +15,8 @@ const Payment = () => {
   const { user } = useAuth();
   const location = useLocation();
   const axiosSecure = useAxiosSecure();
-  const { slot, trainerName, selectedPackage } = location.state || {};
+  const { slot, trainerName, selectedPackage, trainerId, classes } =
+    location.state || {};
   console.log(slot, trainerName, selectedPackage);
 
   const { data: singlePackage, isLoading } = useQuery({
@@ -29,7 +30,9 @@ const Payment = () => {
   const paymentInfo = {
     slot,
     trainerName,
+    trainerId,
     package: selectedPackage,
+    classes,
     price: singlePackage?.price,
     customer: {
       name: user?.displayName,

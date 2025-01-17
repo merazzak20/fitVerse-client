@@ -1,11 +1,13 @@
 import useAuth from "../../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
+import useRole from "../../../hooks/useRole";
+import Loading from "../../../components/shared/Loading";
 
 const Profile = () => {
   const { user, loading } = useAuth();
-  const role = "admin";
-  //   const [role, isLoading] = useRole();
-  //   if (isLoading && loading) return <Loading></Loading>
+  // const role = "admin";
+  const [role, isLoading] = useRole();
+  if (isLoading && loading) return <Loading></Loading>;
 
   console.log(user);
   return (

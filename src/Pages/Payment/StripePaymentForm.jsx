@@ -4,10 +4,9 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 
-const StripePaymentForm = ({ paymentInfo, selectedPackage }) => {
-  const { price } = paymentInfo;
-  //   console.log(price, customer);
-  //   console.log(selectedPackage);
+const StripePaymentForm = ({ paymentInfo: bookingInfo, selectedPackage }) => {
+  const { price } = bookingInfo;
+  console.log(bookingInfo);
   const totalPrice = Math.round(price * 1);
   //   console.log(typeof totalPrice);
   const [err, setErr] = useState("");
@@ -22,7 +21,7 @@ const StripePaymentForm = ({ paymentInfo, selectedPackage }) => {
     axiosSecure
       .post("/create-payment-intent", { price: totalPrice })
       .then((res) => {
-        // console.log(res.data.clientSecret);
+        console.log(res.data.clientSecret);
         setClientSecret(res.data.clientSecret);
       });
   }, [axiosSecure, totalPrice]);
@@ -81,8 +80,10 @@ const StripePaymentForm = ({ paymentInfo, selectedPackage }) => {
           package: selectedPackage,
           status: "pending",
         };
+
         const res = await axiosSecure.post("/payments", payment);
         console.log(res.data.insertedId);
+        await axiosSecure.post(`/bookings/${user?.email}`, bookingInfo);
         if (res.data?.insertedId) {
           toast.success("Payment Successful. 👍");
         }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MenuItem from "./MenuItem";
 import { GrTransaction, GrUserAdmin } from "react-icons/gr";
+import { FiTarget } from "react-icons/fi";
 
 const MemberMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,6 +11,11 @@ const MemberMenu = () => {
         icon={GrTransaction}
         label="Payment History"
         address="/dashboard/paymentHistory"
+      />
+      <MenuItem
+        icon={FiTarget}
+        label="My Booking"
+        address="/dashboard/myBooking"
       />
 
       <button
