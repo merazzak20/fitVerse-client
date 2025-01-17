@@ -2,12 +2,14 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
-const StripePaymentForm = ({ paymentInfo }) => {
-  const { price, customer } = paymentInfo;
-  console.log(price, customer);
-  const totalPrice = Math.round(price * 100);
-  console.log(typeof totalPrice);
+const StripePaymentForm = ({ paymentInfo, selectedPackage }) => {
+  const { price } = paymentInfo;
+  //   console.log(price, customer);
+  //   console.log(selectedPackage);
+  const totalPrice = Math.round(price * 1);
+  //   console.log(typeof totalPrice);
   const [err, setErr] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [transactionId, setTransactionId] = useState("");
@@ -20,7 +22,7 @@ const StripePaymentForm = ({ paymentInfo }) => {
     axiosSecure
       .post("/create-payment-intent", { price: totalPrice })
       .then((res) => {
-        console.log(res.data.clientSecret);
+        // console.log(res.data.clientSecret);
         setClientSecret(res.data.clientSecret);
       });
   }, [axiosSecure, totalPrice]);
@@ -70,6 +72,20 @@ const StripePaymentForm = ({ paymentInfo }) => {
       console.log("paymentIntent", paymentIntent);
       if (paymentIntent.status === "succeeded") {
         setTransactionId(paymentIntent.id);
+        // save information in DB
+        const payment = {
+          email: user.email,
+          price: totalPrice,
+          transactionId: paymentIntent.id,
+          date: new Date(),
+          package: selectedPackage,
+          status: "pending",
+        };
+        const res = await axiosSecure.post("/payments", payment);
+        console.log(res.data.insertedId);
+        if (res.data?.insertedId) {
+          toast.success("Payment Successful. 👍");
+        }
       }
     }
   };

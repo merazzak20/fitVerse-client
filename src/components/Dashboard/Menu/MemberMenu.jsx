@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import MenuItem from "./MenuItem";
-import { BsFingerprint } from "react-icons/bs";
-import { GrUserAdmin } from "react-icons/gr";
+import { GrTransaction, GrUserAdmin } from "react-icons/gr";
 
 const MemberMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <MenuItem icon={BsFingerprint} label="My Orders" address="my-orders" />
+      <MenuItem
+        icon={GrTransaction}
+        label="Payment History"
+        address="/dashboard/paymentHistory"
+      />
 
       <button
         onClick={() => setIsOpen(true)}

@@ -12,7 +12,7 @@ import MemberMenu from "../Menu/MemberMenu";
 const Sidebar = () => {
   const { logOut } = useAuth();
   const [isActive, setActive] = useState(false);
-  const role = "admin";
+  const role = "member";
 
   // Sidebar Responsive Handler
   const handleToggle = () => {

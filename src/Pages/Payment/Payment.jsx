@@ -95,7 +95,10 @@ const Payment = () => {
               Payment Here
             </h2>
             <Elements stripe={stripePromise}>
-              <StripePaymentForm paymentInfo={paymentInfo} />
+              <StripePaymentForm
+                paymentInfo={paymentInfo}
+                selectedPackage={selectedPackage}
+              />
             </Elements>
           </div>
         </div>
