@@ -5,11 +5,17 @@ import { BsGraphUp } from "react-icons/bs";
 import { PiUsersFill } from "react-icons/pi";
 import { TbGitPullRequest } from "react-icons/tb";
 import { FaUsersGear } from "react-icons/fa6";
+import { MdOutlineQueryStats } from "react-icons/md";
 
 const AdminMenu = () => {
   return (
     <>
-      <MenuItem icon={BsGraphUp} label="Statistics" address="/dashboard" />
+      {/* <MenuItem icon={BsGraphUp} label="Statistics" address="/dashboard" /> */}
+      <MenuItem
+        icon={MdOutlineQueryStats}
+        label="Statistics"
+        address="/dashboard"
+      />
       <MenuItem
         icon={PiUsersFill}
         label="All Subscribers"

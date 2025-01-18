@@ -9,15 +9,16 @@ const MemberMenu = () => {
   return (
     <>
       <MenuItem
-        icon={RiBodyScanFill}
-        label="Be A Trainer"
-        address="/dashboard/memberToTrainer"
-      />
-      <MenuItem
         icon={FiTarget}
         label="My Booking"
         address="/dashboard/myBooking"
       />
+      <MenuItem
+        icon={RiBodyScanFill}
+        label="Be A Trainer"
+        address="/dashboard/memberToTrainer"
+      />
+
       <MenuItem
         icon={GrTransaction}
         label="Payment History"

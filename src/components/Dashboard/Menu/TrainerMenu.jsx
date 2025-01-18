@@ -8,16 +8,16 @@ const TrainerMenu = () => {
   return (
     <>
       <MenuItem
+        icon={FaCheckToSlot}
+        label="Manage Slots"
+        address="/dashboard/manageSlots"
+      />
+      <MenuItem
         icon={BsFillHouseAddFill}
         label="Add Plant"
         address="add-plant"
       />
       <MenuItem icon={MdHomeWork} label="My Inventory" address="my-inventory" />
-      <MenuItem
-        icon={FaCheckToSlot}
-        label="Manage Slots"
-        address="/dashboard/manageSlots"
-      />
     </>
   );
 };

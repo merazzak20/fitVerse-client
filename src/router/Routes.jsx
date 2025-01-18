@@ -21,6 +21,8 @@ import TrainerApplication from "../Pages/Dashboard/Member/TrainerApplication.jsx
 import ManageSlots from "../Pages/Dashboard/Trainer/ManageSlots.jsx";
 import AppliedTrainer from "../Pages/Dashboard/Admin/AppliedTrainer.jsx";
 import ApplicantDetails from "../Pages/Dashboard/Admin/ApplicantDetails.jsx";
+import Statistics from "../Pages/Dashboard/Admin/Statistics.jsx";
+import DashboardLanding from "../Pages/Dashboard/Common/DashboardLanding.jsx";
 
 export const Routers = createBrowserRouter([
   {
@@ -90,6 +92,14 @@ export const Routers = createBrowserRouter([
       </PrivateRouter>
     ),
     children: [
+      {
+        index: true,
+        element: (
+          <PrivateRouter>
+            <DashboardLanding />
+          </PrivateRouter>
+        ),
+      },
       // Admin Route
       {
         path: "allSubscriber",
@@ -106,6 +116,10 @@ export const Routers = createBrowserRouter([
       {
         path: "applliedTrainer/:id",
         element: <ApplicantDetails></ApplicantDetails>,
+      },
+      {
+        path: "statistics",
+        element: <Statistics></Statistics>,
       },
 
       // Trainer

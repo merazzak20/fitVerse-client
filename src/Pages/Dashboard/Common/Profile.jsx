@@ -27,17 +27,12 @@ const Profile = () => {
           </a>
 
           {/* Role Tag */}
-          <p className="mb-2 px-4 py-2 text-xs text-white bg-orange-500 rounded-full">
+          <p className=" capitalize mb-2 px-4 py-2 text-xs text-white bg-orange-500 rounded-full">
             {role}
           </p>
 
-          {/* User ID */}
-          <p className="text-lg font-medium text-gray-800 mb-4">
-            User ID: {user?.uid}
-          </p>
-
           {/* User Details */}
-          <div className="w-full p-4 bg-gray-100 rounded-lg shadow-sm">
+          <div className="w-full mt-5 p-4 bg-gray-100 rounded-lg shadow-sm">
             <p className="mb-3">
               <span className="block text-gray-600 text-sm">Name</span>
               <span className="text-black font-semibold text-lg">
