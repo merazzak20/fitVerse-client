@@ -31,7 +31,7 @@ const AppliedTrainer = () => {
           {/* Table Head */}
           <thead>
             <tr className="bg-orange-100 text-gray-600 uppercase text-sm leading-normal">
-              <th className="py-3 px-6 text-center"></th>
+              <th className="py-3 px-6 text-center">#</th>
               <th className="py-3 px-6 text-center">Name</th>
               <th className="py-3 px-6 text-center">Action</th>
             </tr>

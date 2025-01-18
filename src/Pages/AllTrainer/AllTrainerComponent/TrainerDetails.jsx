@@ -70,7 +70,7 @@ const TrainerDetails = () => {
           <div className="bg-white p-6 md:pt-20">
             <h2 className="text-2xl font-bold mb-4">Available Slots:</h2>
             <div className="grid grid-cols-2 gap-4">
-              {trainer?.availableSlots.map((slot, index) => (
+              {trainer?.availableSlots?.map((slot, index) => (
                 <button
                   onClick={() => handleBooking(slot)}
                   key={index}

@@ -82,7 +82,7 @@ const AllTrainer = () => {
                     Available Slots:
                   </h2>
                   <div>
-                    {trainer?.availableSlots.map((slot, idx) => (
+                    {trainer?.availableSlots?.map((slot, idx) => (
                       <p className="text-white" key={idx}>
                         {slot}
                       </p>

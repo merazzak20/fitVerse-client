@@ -103,6 +103,7 @@ const BeATrainerPage = () => {
     console.log(newTrainer);
     try {
       await axiosSecure.post(`/new-trainrs/${email}`, newTrainer);
+      await axiosSecure.delete(`/admin-feedbacks/${email}`);
       toast.success("Request Successful.👌");
     } catch (err) {
       toast.error(err.message);

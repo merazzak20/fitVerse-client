@@ -8,6 +8,7 @@ import { FaCheck, FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { BiEnvelope } from "react-icons/bi";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import toast from "react-hot-toast";
+import AdminFeedbackForm from "../../../components/Form/AdminFeedbackForm";
 
 const ApplicantDetails = () => {
   const { id } = useParams();
@@ -34,7 +35,7 @@ const ApplicantDetails = () => {
   const trainerInfo = {
     ...singleApplicant,
   };
-  console.log(singleApplicant._id);
+  //   console.log(singleApplicant._id);
   const handleAccept = async () => {
     try {
       await axiosSecure.patch(`user/${email}`);
@@ -71,26 +72,26 @@ const ApplicantDetails = () => {
           <div>
             <h3 className="text-xl font-semibold mb-2">Expertise:</h3>
             <ul className="list-disc list-inside text-gray-700">
-              {skills.map((skill, index) => (
+              {skills?.map((skill, index) => (
                 <li key={index}>{skill}</li>
               ))}
             </ul>
           </div>
           <div className="flex gap-4 text-2xl mt-6">
             <a
-              href={socialIcons.facebook}
+              href={socialIcons?.facebook}
               className="hover:text-orange-600 transition"
             >
               <FaFacebook />
             </a>
             <a
-              href={socialIcons.twitter}
+              href={socialIcons?.twitter}
               className="hover:text-orange-400 transition"
             >
               <FaTwitter />
             </a>
             <a
-              href={socialIcons.linkedIn}
+              href={socialIcons?.linkedIn}
               className="hover:text-orange-700 transition"
             >
               <FaLinkedin />
@@ -104,7 +105,7 @@ const ApplicantDetails = () => {
           <div className="mb-10">
             <h2 className="text-2xl font-bold mb-4">Available Days:</h2>
             <div className="grid grid-cols-2 gap-4">
-              {availableDay.map((day, index) => (
+              {availableDay?.map((day, index) => (
                 <button
                   key={index}
                   className="py-2 px-4 bg-orange-900 text-white font-medium rounded-none hover:bg-orange-600 transition"
@@ -119,7 +120,7 @@ const ApplicantDetails = () => {
           <div>
             <h2 className="text-2xl font-bold mb-4">Available Time Slot:</h2>
             <div className="grid grid-cols-2 gap-4">
-              {availableTime.map((time, index) => (
+              {availableTime?.map((time, index) => (
                 <button
                   key={index}
                   className="py-2 px-4 bg-orange-900 text-white font-medium rounded-none hover:bg-orange-600 transition"
@@ -138,11 +139,24 @@ const ApplicantDetails = () => {
             >
               <FaCheck className="text-3xl " />
             </button>
-            <button className="p-4 rounded-full bg-orange-500 text-white font-medium  hover:bg-orange-600 transition">
+            <button
+              onClick={() => document.getElementById("my_modal_2").showModal()}
+              className="p-4 rounded-full bg-orange-500 text-white font-medium  hover:bg-orange-600 transition"
+            >
               <IoMdCloseCircleOutline className="text-3xl " />
             </button>
           </div>
         </div>
+      </div>
+      <div>
+        <dialog id="my_modal_2" className="modal">
+          <div className="modal-box">
+            <AdminFeedbackForm email={email} id={id}></AdminFeedbackForm>
+          </div>
+          <form method="dialog" className="modal-backdrop">
+            <button>close</button>
+          </form>
+        </dialog>
       </div>
     </div>
   );
