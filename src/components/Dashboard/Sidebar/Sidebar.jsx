@@ -8,11 +8,12 @@ import MenuItem from "../Menu/MenuItem";
 import AdminMenu from "../Menu/AdminMenu ";
 import TrainerMenu from "../Menu/TrainerMenu";
 import MemberMenu from "../Menu/MemberMenu";
+import useRole from "../../../hooks/useRole";
 
 const Sidebar = () => {
   const { logOut } = useAuth();
   const [isActive, setActive] = useState(false);
-  const role = "member";
+  const [role] = useRole();
 
   // Sidebar Responsive Handler
   const handleToggle = () => {

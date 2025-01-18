@@ -17,6 +17,10 @@ import Profile from "../Pages/Dashboard/Common/Profile.jsx";
 import AdminAllTrainer from "../Pages/Dashboard/Admin/AdminAllTrainer.jsx";
 import PaymentHistory from "../Pages/Dashboard/Member/PaymentHistory.jsx";
 import MyBooking from "../Pages/Dashboard/Member/MyBooking.jsx";
+import TrainerApplication from "../Pages/Dashboard/Member/TrainerApplication.jsx";
+import ManageSlots from "../Pages/Dashboard/Trainer/ManageSlots.jsx";
+import AppliedTrainer from "../Pages/Dashboard/Admin/AppliedTrainer.jsx";
+import ApplicantDetails from "../Pages/Dashboard/Admin/ApplicantDetails.jsx";
 
 export const Routers = createBrowserRouter([
   {
@@ -95,6 +99,20 @@ export const Routers = createBrowserRouter([
         path: "adminAllTrainer",
         element: <AdminAllTrainer></AdminAllTrainer>,
       },
+      {
+        path: "applliedTrainer",
+        element: <AppliedTrainer></AppliedTrainer>,
+      },
+      {
+        path: "applliedTrainer/:id",
+        element: <ApplicantDetails></ApplicantDetails>,
+      },
+
+      // Trainer
+      {
+        path: "manageSlots",
+        element: <ManageSlots></ManageSlots>,
+      },
 
       // Member
       {
@@ -104,6 +122,10 @@ export const Routers = createBrowserRouter([
       {
         path: "myBooking",
         element: <MyBooking></MyBooking>,
+      },
+      {
+        path: "memberToTrainer",
+        element: <TrainerApplication></TrainerApplication>,
       },
 
       {

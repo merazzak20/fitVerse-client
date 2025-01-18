@@ -1,7 +1,8 @@
 import React from "react";
 import MenuItem from "./MenuItem";
 import { BsFillHouseAddFill } from "react-icons/bs";
-import { MdHomeWork, MdOutlineManageHistory } from "react-icons/md";
+import { MdHomeWork } from "react-icons/md";
+import { FaCheckToSlot } from "react-icons/fa6";
 
 const TrainerMenu = () => {
   return (
@@ -13,9 +14,9 @@ const TrainerMenu = () => {
       />
       <MenuItem icon={MdHomeWork} label="My Inventory" address="my-inventory" />
       <MenuItem
-        icon={MdOutlineManageHistory}
-        label="Manage Orders"
-        address="manage-orders"
+        icon={FaCheckToSlot}
+        label="Manage Slots"
+        address="/dashboard/manageSlots"
       />
     </>
   );

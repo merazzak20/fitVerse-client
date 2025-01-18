@@ -2,30 +2,27 @@ import React, { useState } from "react";
 import MenuItem from "./MenuItem";
 import { GrTransaction, GrUserAdmin } from "react-icons/gr";
 import { FiTarget } from "react-icons/fi";
+import { RiBodyScanFill } from "react-icons/ri";
 
 const MemberMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <MenuItem
-        icon={GrTransaction}
-        label="Payment History"
-        address="/dashboard/paymentHistory"
+        icon={RiBodyScanFill}
+        label="Be A Trainer"
+        address="/dashboard/memberToTrainer"
       />
       <MenuItem
         icon={FiTarget}
         label="My Booking"
         address="/dashboard/myBooking"
       />
-
-      <button
-        onClick={() => setIsOpen(true)}
-        className="flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform text-gray-600  hover:bg-gray-300   hover:text-gray-700 cursor-pointer"
-      >
-        <GrUserAdmin className="w-5 h-5" />
-
-        <span className="mx-4 font-medium">Become A Seller</span>
-      </button>
+      <MenuItem
+        icon={GrTransaction}
+        label="Payment History"
+        address="/dashboard/paymentHistory"
+      />
     </>
   );
 };

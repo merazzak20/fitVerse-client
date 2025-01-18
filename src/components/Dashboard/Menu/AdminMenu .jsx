@@ -3,6 +3,8 @@ import MenuItem from "./MenuItem";
 import { BsGraphUp } from "react-icons/bs";
 
 import { PiUsersFill } from "react-icons/pi";
+import { TbGitPullRequest } from "react-icons/tb";
+import { FaUsersGear } from "react-icons/fa6";
 
 const AdminMenu = () => {
   return (
@@ -14,7 +16,12 @@ const AdminMenu = () => {
         address="allSubscriber"
       />
       <MenuItem
-        icon={PiUsersFill}
+        icon={TbGitPullRequest}
+        label="Trainer Applications"
+        address="applliedTrainer"
+      />
+      <MenuItem
+        icon={FaUsersGear}
         label="All Trainers"
         address="adminAllTrainer"
       />
