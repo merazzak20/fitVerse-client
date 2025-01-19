@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loading from "../../components/shared/Loading";
 import Container from "../../components/Container";
 import toast from "react-hot-toast";
+import { RiAdminLine } from "react-icons/ri";
 
 const AllForums = () => {
   const axiosSecure = useAxiosSecure();
@@ -63,7 +64,14 @@ const AllForums = () => {
                     {forum?.posterInfo.name}
                   </h2>
                   <p className="text-sm badge bg-orange-300 text-orange-900 font-semibold capitalize">
-                    {forum?.userRole}
+                    {forum?.userRole && forum?.userRole === "admin" ? (
+                      <div className="flex items-center gap-1">
+                        <RiAdminLine className="inline-block" />{" "}
+                        {forum?.userRole}
+                      </div>
+                    ) : (
+                      forum?.userRole
+                    )}
                   </p>
                 </div>
               </div>

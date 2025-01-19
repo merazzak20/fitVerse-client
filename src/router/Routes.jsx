@@ -133,6 +133,10 @@ export const Routers = createBrowserRouter([
         path: "addClasses",
         element: <AddClasses></AddClasses>,
       },
+      {
+        path: "adminAddForum",
+        element: <AddForum></AddForum>,
+      },
 
       // Trainer
       {

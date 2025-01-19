@@ -4,6 +4,7 @@ import { PiUsersFill } from "react-icons/pi";
 import { TbGitPullRequest } from "react-icons/tb";
 import { FaUsersGear } from "react-icons/fa6";
 import { MdAssignmentAdd, MdOutlineQueryStats } from "react-icons/md";
+import { GrArticle } from "react-icons/gr";
 
 const AdminMenu = () => {
   return (
@@ -34,6 +35,7 @@ const AdminMenu = () => {
         label="Add Classes"
         address="addClasses"
       />
+      <MenuItem icon={GrArticle} label="Add Forum" address="adminAddForum" />
     </>
   );
 };
