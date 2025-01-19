@@ -4,9 +4,9 @@ At FitVerse, we believe fitness is more than a routine—it's a lifestyle. Our m
 
 ## We pride ourselves on offering:
 
-**Innovative Fitness Solutions:** From state-of-the-art equipment to smart progress tracking tools, we redefine the workout experience.
-**Expert Guidance:** Our certified trainers are dedicated to helping you achieve your goals with personalized support and encouragement.
-**A Thriving Community:** FitVerse is more than just a gym—it's a place where like-minded individuals come together to inspire and uplift one another.
+- **Innovative Fitness Solutions:** From state-of-the-art equipment to smart progress tracking tools, we redefine the workout experience.
+- **Expert Guidance:** Our certified trainers are dedicated to helping you achieve your goals with personalized support and encouragement.
+- **A Thriving Community:** FitVerse is more than just a gym—it's a place where like-minded individuals come together to inspire and uplift one another.
 
 ## List of Fundamental concepts used in the project:
 
