@@ -25,22 +25,21 @@ At FitVerse, we believe fitness is more than a routine—it's a lifestyle. Our m
 - **React Toast**
 - **Swiper Js**
 - **React Icons**
-- **React Lottie**
-- **React Awesome revealfire**
+- **React Select**
 - **React Awesome AXIOS**
 
-## 5 features of this website
+## Features of this website
 
-1. **1. Class Schedule & Booking**
-2. **2. Trainer Profiles**
-3. **3. Membership Plans**
-4. **4. Interactive Dashboard**
-5. **5. Virtual Workouts**
-6. **6. Testimonials & Success Stories**
-7. **7. Health & Fitness Blog**
-8. **8. Loyalty Program**
-9. **9. Mobile-Friendly Design**
-10. **10. Contact & Support**
+1. **Class Schedule & Booking**
+2. **Trainer Profiles**
+3. **Membership Plans**
+4. **Interactive Dashboard**
+5. **Virtual Workouts**
+6. **Testimonials & Success Stories**
+7. **Health & Fitness Blog**
+8. **Loyalty Program**
+9. **Mobile-Friendly Design**
+10. **Contact & Support**
 
 ## Live Link -
 
