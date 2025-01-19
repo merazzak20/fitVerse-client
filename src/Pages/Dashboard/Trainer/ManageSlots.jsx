@@ -12,7 +12,11 @@ const ManageSlots = () => {
   const { user } = useAuth();
   console.log(user?.email);
   const axiosSecure = useAxiosSecure();
-  const { data: trainerSlots, isLoading } = useQuery({
+  const {
+    data: trainerSlots,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["trainerSlots"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/trainer/${user?.email}`);
@@ -26,6 +30,7 @@ const ManageSlots = () => {
     console.log(slot);
     try {
       await axiosSecure.patch(`/trainer/${user?.email}/slot`, { slot });
+      refetch();
       toast.success("Successfully Remove.👍");
     } catch (err) {
       toast.error(err.message);

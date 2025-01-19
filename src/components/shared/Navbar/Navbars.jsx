@@ -51,20 +51,17 @@ const Navbars = () => {
   const dropDownLinks = (
     <>
       <li>
-        <h3 className="font-bold mb-2 text-[18px hover:cursor-default">
+        <Link className="font-bold mb-2 text-[18px hover:cursor-default">
           {user?.displayName}
-        </h3>
+        </Link>
       </li>
       <li>
-        <Link to="/dashboard">Dashboard</Link>
+        <NavLink to="/dashboard">Dashboard</NavLink>
       </li>
       <li>
-        <Link to="/likedArtifacts">Liked Artifacts</Link>
-      </li>
-      <li>
-        <p onClick={handleSignOut} className="">
+        <Link onClick={handleSignOut} className="">
           Logout <IoIosLogOut className="text-xl" />
-        </p>
+        </Link>
       </li>
     </>
   );

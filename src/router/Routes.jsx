@@ -24,6 +24,7 @@ import ApplicantDetails from "../Pages/Dashboard/Admin/ApplicantDetails.jsx";
 import Statistics from "../Pages/Dashboard/Admin/Statistics.jsx";
 import DashboardLanding from "../Pages/Dashboard/Common/DashboardLanding.jsx";
 import AddClasses from "../Pages/Dashboard/Admin/AddClasses.jsx";
+import AddSlot from "../Pages/Dashboard/Trainer/AddSlot.jsx";
 
 export const Routers = createBrowserRouter([
   {
@@ -131,6 +132,10 @@ export const Routers = createBrowserRouter([
       {
         path: "manageSlots",
         element: <ManageSlots></ManageSlots>,
+      },
+      {
+        path: "addSlots",
+        element: <AddSlot></AddSlot>,
       },
 
       // Member

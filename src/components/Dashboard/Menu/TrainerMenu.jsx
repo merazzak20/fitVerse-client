@@ -3,6 +3,7 @@ import MenuItem from "./MenuItem";
 import { BsFillHouseAddFill } from "react-icons/bs";
 import { MdHomeWork } from "react-icons/md";
 import { FaCheckToSlot } from "react-icons/fa6";
+import { GrChapterAdd } from "react-icons/gr";
 
 const TrainerMenu = () => {
   return (
@@ -12,11 +13,7 @@ const TrainerMenu = () => {
         label="Manage Slots"
         address="/dashboard/manageSlots"
       />
-      <MenuItem
-        icon={BsFillHouseAddFill}
-        label="Add Plant"
-        address="add-plant"
-      />
+      <MenuItem icon={GrChapterAdd} label="Add Slots" address="addSlots" />
       <MenuItem icon={MdHomeWork} label="My Inventory" address="my-inventory" />
     </>
   );
