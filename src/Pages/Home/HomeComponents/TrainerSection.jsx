@@ -25,7 +25,7 @@ const TrainerSection = () => {
           {trainers.map((trainer) => (
             <div
               style={{
-                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.7)), url(${trainer?.profileImage})`,
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.7)), url(${trainer?.image})`,
                 backgroundPosition: "center",
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
@@ -38,7 +38,7 @@ const TrainerSection = () => {
                   {trainer?.name}
                 </h2>
                 <p className="text-zinc-50 bg-orange-900 px-2 py-1">
-                  {trainer?.yearsOfExperience} years of experience
+                  {trainer?.experience} years of experience
                 </p>
               </div>
             </div>

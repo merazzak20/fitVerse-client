@@ -4,16 +4,56 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { FaDeleteLeft } from "react-icons/fa6";
 import { MdDeleteForever } from "react-icons/md";
+import toast from "react-hot-toast";
 
 const AdminAllTrainer = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: alltrainers = [] } = useQuery({
+  const { data: alltrainers = [], refetch } = useQuery({
     queryKey: ["alltrainers"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/trainers`);
       return res.data;
     },
   });
+  const handleDelete = async (email) => {
+    console.log(email);
+    try {
+      await axiosSecure.delete(`/trainers/${email}`);
+      await axiosSecure.patch(`user/${email}`);
+      refetch();
+      toast.success("Successfully Remove.👍");
+    } catch (err) {
+      toast.error(err.message);
+    }
+  };
+  const modernDelete = (email) => {
+    toast((t) => (
+      <div className="flex gap-3 items-center">
+        <div>
+          <p>
+            Are you <b>sure?</b>
+          </p>
+        </div>
+        <div className="gap-2 flex">
+          <button
+            className="bg-red-400 text-white px-3 py-1 rounded-md"
+            onClick={() => {
+              toast.dismiss(t.email);
+              handleDelete(email);
+            }}
+          >
+            Yes
+          </button>
+          <button
+            className="bg-green-400 text-white px-3 py-1 rounded-md"
+            onClick={() => toast.dismiss(t.email)}
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    ));
+  };
   console.log(alltrainers);
   return (
     <div>
@@ -45,9 +85,9 @@ const AdminAllTrainer = () => {
               >
                 <td className="py-3 px-6">{index + 1}</td>
                 <td className="py-3 px-6">{item?.name}</td>
-                <td className="py-3 px-6">{item?.yearsOfExperience}</td>
+                <td className="py-3 px-6">{item?.experience}</td>
                 <td className="py-3 px-6">
-                  <button className="">
+                  <button onClick={() => modernDelete(item.email)} className="">
                     <MdDeleteForever className="text-3xl text-orange-600"></MdDeleteForever>
                   </button>
                 </td>

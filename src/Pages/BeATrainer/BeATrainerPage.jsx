@@ -6,10 +6,12 @@ import Select from "react-select";
 import { uploadImage } from "../../API/utils";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const BeATrainerPage = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+  const navigate = useNavigate();
   console.log(user);
   const [formData, setFormData] = useState({
     availableTime: [],
@@ -104,6 +106,7 @@ const BeATrainerPage = () => {
     try {
       await axiosSecure.post(`/new-trainrs/${email}`, newTrainer);
       await axiosSecure.delete(`/admin-feedbacks/${email}`);
+      navigate("/dashboard/memberToTrainer");
       toast.success("Request Successful.👌");
     } catch (err) {
       toast.error(err.message);

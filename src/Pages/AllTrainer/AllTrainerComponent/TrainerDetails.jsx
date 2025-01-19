@@ -36,22 +36,24 @@ const TrainerDetails = () => {
           {/* Trainer Info Section */}
           <div className="bg-white p-6">
             <img
-              src={trainer?.profileImage}
+              src={trainer?.image}
               alt={trainer?.name}
               className="mx-auto mb-4"
             />
             <h2 className="text-4xl font-bold  mb-2">{trainer?.name}</h2>
             <p className=" text-orange-600 font-semibold text-xl ">
-              {trainer?.yearsOfExperience} years of experience
+              {trainer?.experience} years of experience
             </p>
-            <p className="text-gray-700  mb-4">{trainer?.details}</p>
+            <p className="text-gray-700  mb-4">{trainer?.biography}</p>
             <div className="">
-              <h3 className="text-xl font-semibold mb-2">Expertise:</h3>
-              {/* <ul className="list-disc list-inside text-gray-700">
-                {trainer?.expertise.map((area, index) => (
-                  <li key={index}>{area}</li>
-                ))}
-              </ul> */}
+              <h3 className="text-xl font-semibold mb-2">
+                Expertise:
+                <ul className="list-disc list-inside text-gray-700 mt-2">
+                  {trainer?.skills?.map((skill, index) => (
+                    <li key={index}>{skill}</li>
+                  ))}
+                </ul>
+              </h3>
             </div>
             <div className="flex gap-2 text-2xl mt-6">
               <a href={trainer?.socialIcons.facebook}>
@@ -60,7 +62,7 @@ const TrainerDetails = () => {
               <a href={trainer?.socialIcons.twitter}>
                 <FaTwitter></FaTwitter>
               </a>
-              <a href={trainer?.socialIcons.linkedin}>
+              <a href={trainer?.socialIcons.linkedIn}>
                 <FaLinkedin></FaLinkedin>
               </a>
             </div>
@@ -70,13 +72,13 @@ const TrainerDetails = () => {
           <div className="bg-white p-6 md:pt-20">
             <h2 className="text-2xl font-bold mb-4">Available Slots:</h2>
             <div className="grid grid-cols-2 gap-4">
-              {trainer?.availableSlots?.map((slot, index) => (
+              {trainer?.availableTime?.map((time, index) => (
                 <button
-                  onClick={() => handleBooking(slot)}
+                  onClick={() => handleBooking(time)}
                   key={index}
                   className="py-2 px-4 bg-orange-500 text-white font-medium rounded-none hover:bg-orange-600 transition"
                 >
-                  {slot}
+                  {time}
                 </button>
               ))}
             </div>

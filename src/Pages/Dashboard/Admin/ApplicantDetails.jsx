@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import SectionTitle from "../../../components/shared/SectionTitle";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
@@ -11,6 +11,7 @@ import toast from "react-hot-toast";
 import AdminFeedbackForm from "../../../components/Form/AdminFeedbackForm";
 
 const ApplicantDetails = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
   const { data: singleApplicant, isLoading } = useQuery({
@@ -41,6 +42,7 @@ const ApplicantDetails = () => {
       await axiosSecure.patch(`user/${email}`);
       await axiosSecure.post(`/trainers/${email}`, trainerInfo);
       await axiosSecure.delete(`/new-trainrs/${singleApplicant._id}`);
+      navigate("/dashboard/applliedTrainer");
       toast.success("Successfuly Update.👍");
     } catch (err) {
       toast.error(err.message);

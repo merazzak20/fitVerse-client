@@ -13,6 +13,7 @@ const Booking = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { slot, trainerId, trainerName } = location.state || {};
+  console.log(trainerId);
   const axiosSecure = useAxiosSecure();
   const { data: classes = [], isLoading } = useQuery({
     queryKey: ["classes", trainerId],
@@ -79,7 +80,7 @@ const Booking = () => {
           </div>
           <div className="col-span-12 md:col-span-6 lg:col-span-3 md:mt-10">
             <div className="grid md:grid-cols-2 lg:grid-cols-1 gap-6 ">
-              {classes.map((item) => (
+              {classes?.map((item) => (
                 <div
                   key={item._id}
                   className="card bg-base-100 shadow-md rounded-none"

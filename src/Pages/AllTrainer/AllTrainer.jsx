@@ -41,7 +41,7 @@ const AllTrainer = () => {
           {trainers.map((trainer) => (
             <div
               style={{
-                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.8)), url(${trainer?.profileImage})`,
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.8)), url(${trainer?.image})`,
                 backgroundPosition: "center",
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
@@ -50,7 +50,7 @@ const AllTrainer = () => {
               key={trainer._id}
             >
               <p className="text-zinc-50 bg-orange-900 px-2 absolute top-0 py-1">
-                {trainer?.yearsOfExperience} years of experience
+                {trainer?.experience} years of experience
               </p>
               <div className="absolute bottom-10 left-3 flex justify-between items-start gap-5 ">
                 <div>
@@ -59,13 +59,13 @@ const AllTrainer = () => {
                   </h2>
 
                   <div className="flex gap-2 text-zinc-50 text-2xl mt-2">
-                    <a href={trainer?.socialIcons.facebook}>
+                    <a href={trainer?.socialIcons?.facebook}>
                       <FaFacebook></FaFacebook>
                     </a>
-                    <a href={trainer?.socialIcons.twitter}>
+                    <a href={trainer?.socialIcons?.twitter}>
                       <FaTwitter></FaTwitter>
                     </a>
-                    <a href={trainer?.socialIcons.linkedin}>
+                    <a href={trainer?.socialIcons?.linkedIn}>
                       <FaLinkedin></FaLinkedin>
                     </a>
                   </div>
