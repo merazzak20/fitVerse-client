@@ -23,6 +23,7 @@ import AppliedTrainer from "../Pages/Dashboard/Admin/AppliedTrainer.jsx";
 import ApplicantDetails from "../Pages/Dashboard/Admin/ApplicantDetails.jsx";
 import Statistics from "../Pages/Dashboard/Admin/Statistics.jsx";
 import DashboardLanding from "../Pages/Dashboard/Common/DashboardLanding.jsx";
+import AddClasses from "../Pages/Dashboard/Admin/AddClasses.jsx";
 
 export const Routers = createBrowserRouter([
   {
@@ -120,6 +121,10 @@ export const Routers = createBrowserRouter([
       {
         path: "statistics",
         element: <Statistics></Statistics>,
+      },
+      {
+        path: "addClasses",
+        element: <AddClasses></AddClasses>,
       },
 
       // Trainer

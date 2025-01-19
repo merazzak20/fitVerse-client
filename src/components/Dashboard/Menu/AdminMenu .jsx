@@ -1,11 +1,9 @@
 import React from "react";
 import MenuItem from "./MenuItem";
-import { BsGraphUp } from "react-icons/bs";
-
 import { PiUsersFill } from "react-icons/pi";
 import { TbGitPullRequest } from "react-icons/tb";
 import { FaUsersGear } from "react-icons/fa6";
-import { MdOutlineQueryStats } from "react-icons/md";
+import { MdAssignmentAdd, MdOutlineQueryStats } from "react-icons/md";
 
 const AdminMenu = () => {
   return (
@@ -30,6 +28,11 @@ const AdminMenu = () => {
         icon={FaUsersGear}
         label="All Trainers"
         address="adminAllTrainer"
+      />
+      <MenuItem
+        icon={MdAssignmentAdd}
+        label="Add Classes"
+        address="addClasses"
       />
     </>
   );

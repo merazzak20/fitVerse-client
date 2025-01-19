@@ -43,7 +43,7 @@ const Classes = () => {
                   </div>
                 </h2>
                 <p>{item?.details}</p>
-                <p>{item?.trainerId}</p>
+                {/* <p>{item?.trainerId}</p> */}
               </div>
             </div>
           ))}
