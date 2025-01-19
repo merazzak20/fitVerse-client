@@ -25,6 +25,8 @@ import Statistics from "../Pages/Dashboard/Admin/Statistics.jsx";
 import DashboardLanding from "../Pages/Dashboard/Common/DashboardLanding.jsx";
 import AddClasses from "../Pages/Dashboard/Admin/AddClasses.jsx";
 import AddSlot from "../Pages/Dashboard/Trainer/AddSlot.jsx";
+import AddForum from "../Pages/Dashboard/Trainer/AddForum.jsx";
+import AllForums from "../Pages/Forums/AllForums.jsx";
 
 export const Routers = createBrowserRouter([
   {
@@ -47,6 +49,10 @@ export const Routers = createBrowserRouter([
       {
         path: "/allTrainer/:id",
         element: <TrainerDetails></TrainerDetails>,
+      },
+      {
+        path: "/allForums",
+        element: <AllForums></AllForums>,
       },
       {
         path: "/booking",
@@ -136,6 +142,10 @@ export const Routers = createBrowserRouter([
       {
         path: "addSlots",
         element: <AddSlot></AddSlot>,
+      },
+      {
+        path: "addForum",
+        element: <AddForum></AddForum>,
       },
 
       // Member

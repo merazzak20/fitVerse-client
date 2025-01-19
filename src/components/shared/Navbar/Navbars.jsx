@@ -34,6 +34,9 @@ const Navbars = () => {
       <li>
         <NavLink to="/allClasses">Clasess</NavLink>
       </li>
+      <li>
+        <NavLink to="/allForums">All Forums</NavLink>
+      </li>
     </>
   );
 
