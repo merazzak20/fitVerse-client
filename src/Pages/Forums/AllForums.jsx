@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SectionTitle from "../../components/shared/SectionTitle";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
@@ -6,21 +6,32 @@ import Loading from "../../components/shared/Loading";
 import Container from "../../components/Container";
 import toast from "react-hot-toast";
 import { RiAdminLine } from "react-icons/ri";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const AllForums = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const forumPerPage = 4;
+  const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
-  const {
-    data: allForums = [],
-    isLoading,
-    refetch,
-  } = useQuery({
-    queryKey: ["allForums"],
+  const { data, isLoading, refetch } = useQuery({
+    queryKey: ["allForums", currentPage, forumPerPage],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/forums`);
+      const res = await axiosPublic.get(
+        `/forums?page=${currentPage}&limit=${forumPerPage}`
+      );
       return res.data;
     },
   });
-  if (isLoading) return <Loading></Loading>;
+
+  const totalForum = data?.totalForums || 0;
+  const numOfPage = Math.ceil(totalForum / forumPerPage) || 1;
+  console.log(totalForum, numOfPage);
+  const pages = [...Array(numOfPage).keys()];
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    refetch();
+  };
 
   const handleUpVote = async (id) => {
     try {
@@ -40,6 +51,7 @@ const AllForums = () => {
       toast.error(error.message);
     }
   };
+  if (isLoading) return <Loading></Loading>;
 
   return (
     <div>
@@ -48,7 +60,7 @@ const AllForums = () => {
           <SectionTitle heading={"All Forums"}></SectionTitle>
         </div>
         <div className="grid grid-cols-2 gap-10">
-          {allForums?.map((forum) => (
+          {data?.forums?.map((forum) => (
             <div
               className="border-orange-200 border p-4 rounded-md"
               key={forum._id}
@@ -143,6 +155,21 @@ const AllForums = () => {
                 </button>
               </div>
             </div>
+          ))}
+        </div>
+        <div className="text-center my-10">
+          {pages.map((page) => (
+            <button
+              className={`btn btn-sm rounded-none mx-1 ${
+                currentPage === page + 1
+                  ? "bg-orange-500 text-white"
+                  : "bg-gray-200 text-gray-700"
+              }`}
+              onClick={() => handlePageChange(page + 1)}
+              key={page}
+            >
+              {page + 1}
+            </button>
           ))}
         </div>
       </Container>

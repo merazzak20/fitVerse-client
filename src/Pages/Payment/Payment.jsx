@@ -17,7 +17,7 @@ const Payment = () => {
   const axiosSecure = useAxiosSecure();
   const { slot, trainerName, selectedPackage, trainerId, classes } =
     location.state || {};
-  console.log(slot, trainerName, selectedPackage);
+  console.log(slot, trainerName, selectedPackage, classes);
 
   const { data: singlePackage, isLoading } = useQuery({
     queryKey: ["packages"],
@@ -99,6 +99,7 @@ const Payment = () => {
             </h2>
             <Elements stripe={stripePromise}>
               <StripePaymentForm
+                classes={classes}
                 paymentInfo={paymentInfo}
                 selectedPackage={selectedPackage}
               />

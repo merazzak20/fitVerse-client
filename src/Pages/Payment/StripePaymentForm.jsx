@@ -4,9 +4,14 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 
-const StripePaymentForm = ({ paymentInfo: bookingInfo, selectedPackage }) => {
+const StripePaymentForm = ({
+  paymentInfo: bookingInfo,
+  selectedPackage,
+  classes,
+}) => {
   const { price } = bookingInfo;
   console.log(bookingInfo);
+  console.log(classes);
   const totalPrice = Math.round(price * 1);
   //   console.log(typeof totalPrice);
   const [err, setErr] = useState("");
@@ -84,6 +89,11 @@ const StripePaymentForm = ({ paymentInfo: bookingInfo, selectedPackage }) => {
         const res = await axiosSecure.post("/payments", payment);
         console.log(res.data.insertedId);
         await axiosSecure.post(`/bookings/${user?.email}`, bookingInfo);
+        if (classes) {
+          for (const clas of classes) {
+            await axiosSecure.patch(`classes/${clas._id}`);
+          }
+        }
         if (res.data?.insertedId) {
           toast.success("Payment Successful. 👍");
         }
