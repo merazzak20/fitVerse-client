@@ -7,13 +7,15 @@ import Loading from "../../components/shared/Loading";
 
 const Classes = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchItem, setSearchItem] = useState(""); // State for input
+  const [appliedSearch, setAppliedSearch] = useState(""); // State for applied search
   const classesPerPage = 6;
   const axiosPublic = useAxiosPublic();
   const { data, isLoading } = useQuery({
-    queryKey: ["packages", currentPage, classesPerPage],
+    queryKey: ["packages", currentPage, classesPerPage, appliedSearch],
     queryFn: async () => {
       const { data } = await axiosPublic.get(
-        `/classes?page=${currentPage}&limit=${classesPerPage}`
+        `/classes?page=${currentPage}&limit=${classesPerPage}&search=${appliedSearch}`
       );
       return data;
     },
@@ -30,11 +32,32 @@ const Classes = () => {
     setCurrentPage(page);
   };
 
+  const handleSearch = () => {
+    setAppliedSearch(searchItem); // Apply the current search term
+    setCurrentPage(1); // Reset to the first page for new results
+  };
+
   return (
     <div className="my-14">
       <Container>
         <div className="text-center">
           <SectionTitle heading={"All classes"}></SectionTitle>
+        </div>
+        {/* Search Input */}
+        <div className="mb-6 text-center flex justify-center items-center gap-2">
+          <input
+            type="text"
+            placeholder="Search by class name"
+            value={searchItem}
+            onChange={(e) => setSearchItem(e.target.value)}
+            className="input input-bordered rounded-none w-full max-w-lg"
+          />
+          <button
+            onClick={handleSearch}
+            className="btn bg-orange-500 rounded-none px-6 py-3"
+          >
+            Search
+          </button>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
           {data?.classes?.map((item) => (
