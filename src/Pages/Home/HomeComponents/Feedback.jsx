@@ -32,7 +32,7 @@ const Feedback = () => {
   console.log(feedbacks);
   if (isLoading) return;
   return (
-    <div className="my-14 mb-16">
+    <div className="my-14 mb-16 bg-orange-50 py-5 pb-10">
       <Container>
         <div className="text-center">
           <SectionTitle heading={"Feedback"}></SectionTitle>

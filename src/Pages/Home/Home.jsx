@@ -6,6 +6,7 @@ import Classes from "./HomeComponents/Classes";
 import Feedback from "./HomeComponents/Feedback";
 import Newsletter from "./HomeComponents/Newsletter";
 import TrainerSection from "./HomeComponents/TrainerSection";
+import ForumHome from "./HomeComponents/ForumHome";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <About></About>
       <Classes></Classes>
       <Feedback></Feedback>
+      <ForumHome></ForumHome>
       <Newsletter></Newsletter>
       <TrainerSection></TrainerSection>
     </div>

@@ -22,7 +22,7 @@ const Booking = () => {
       return data;
     },
   });
-  console.log(classes);
+  console.log("class: ", classes[0]);
 
   console.log(slot, trainerId, trainerName);
   const handleJoin = (e) => {
@@ -89,13 +89,19 @@ const Booking = () => {
                     <img
                       className="hover:scale-110 
                 transition h-60 w-full object-cover"
-                      src={item?.trainerClasses?.image}
+                      src={item?.image}
                       alt="image"
                     />
                   </figure>
                   <div className="card-body">
-                    <h2 className="card-title">{item?.trainerClasses?.name}</h2>
-                    <p>{item?.trainerClasses?.details}</p>
+                    <h2 className="card-title">
+                      {item?.name}
+                      <div className="badge bg-orange-500 text-white">
+                        {item?.booking_count}
+                      </div>
+                    </h2>
+
+                    <p>{item?.details}</p>
                   </div>
                 </div>
               ))}

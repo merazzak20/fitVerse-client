@@ -49,7 +49,9 @@ const TrainerApplication = () => {
           </button>
         </h2>
       ) : (
-        "You have no Application"
+        <p className="text-center text-xl font-semibold">
+          You have no Application
+        </p>
       )}
       <div>
         <dialog id="my_modal_2" className="modal">

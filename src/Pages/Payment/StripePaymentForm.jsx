@@ -117,7 +117,9 @@ const StripePaymentForm = ({ paymentInfo: bookingInfo, selectedPackage }) => {
         >
           Pay
         </button>
-        <p className="text-red-500">{err}</p>
+
+        {err && <p className="text-red-500">{err}</p>}
+
         {transactionId && (
           <p className="text-blue-500">
             Payment Successful. Transaction Id -{" "}

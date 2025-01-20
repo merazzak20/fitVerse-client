@@ -7,6 +7,7 @@ import Container from "../../Container";
 import userIcon from "../../../assets/user.png";
 import useAuth from "../../../hooks/useAuth";
 import Loading from "../Loading";
+import logo from "../../../assets/logo.png";
 
 const Navbars = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -69,7 +70,7 @@ const Navbars = () => {
     </>
   );
   return (
-    <div className="bg-zinc-950 bg-opacity-50">
+    <div className="bg-zinc-950 bg-opacity-50 py-2">
       <Container>
         <div className="navbar  text-neutral-content">
           <div className="navbar-start">
@@ -102,7 +103,8 @@ const Navbars = () => {
               </ul>
             </div>
             <Link to="/" className="text-4xl font-bold">
-              Fit<span className="text-orange-500">Verse</span>
+              {/* Fit<span className="text-orange-500">Verse</span> */}
+              <img className="w-44" src={logo} alt="" />
             </Link>
           </div>
           <div className="navbar-center hidden lg:flex">

@@ -56,13 +56,13 @@ const TrainerDetails = () => {
               </h3>
             </div>
             <div className="flex gap-2 text-2xl mt-6">
-              <a href={trainer?.socialIcons.facebook}>
+              <a href={trainer?.socialIcons?.facebook}>
                 <FaFacebook></FaFacebook>
               </a>
-              <a href={trainer?.socialIcons.twitter}>
+              <a href={trainer?.socialIcons?.twitter}>
                 <FaTwitter></FaTwitter>
               </a>
-              <a href={trainer?.socialIcons.linkedIn}>
+              <a href={trainer?.socialIcons?.linkedIn}>
                 <FaLinkedin></FaLinkedin>
               </a>
             </div>

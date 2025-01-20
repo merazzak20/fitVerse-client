@@ -25,9 +25,9 @@ const AddSlot = () => {
   });
 
   console.log(singleTrainer);
-  // Populate formData when singleTrainer is loaded
-  if (singleTrainer) {
-    useEffect(() => {
+
+  useEffect(() => {
+    if (singleTrainer) {
       setFormData({
         availableTime: singleTrainer.availableTime || [],
         availableDay:
@@ -37,8 +37,9 @@ const AddSlot = () => {
           })) || [],
         skills: singleTrainer.skills || [],
       });
-    }, [singleTrainer]);
-  }
+    }
+  }, [singleTrainer]);
+
   if (isLoading || !singleTrainer) return <Loading></Loading>;
   const skillsOptions = ["Yoga", "Cardio", "Weightlifting", "Zumba", "Pilates"];
 
@@ -69,6 +70,7 @@ const AddSlot = () => {
     }
     console.log(formData.availableTime);
   };
+
   return (
     <div>
       <Helmet>

@@ -2,6 +2,7 @@ import React from "react";
 import Container from "../../Container";
 import footerBg from "../../../assets/footer.jpg";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import logo from "../../../assets/logo.png";
 
 const Footer = () => {
   return (
@@ -18,17 +19,22 @@ const Footer = () => {
         <footer className="footer text-neutral-content p-10 md:grid-cols-3">
           <aside>
             <h2 className="text-4xl font-bold">
-              Fit<span className="text-orange-500">Verse</span>
+              {/* Fit<span className="text-orange-500">Verse</span> */}
+              <img className="w-52" src={logo} alt="" />
             </h2>
-            <p>Providing reliable tech since 1992</p>
+            <p className="w-11/12 text-justify">
+              We provide state-of-the-art equipment, advanced fitness
+              technology, and personalized training programs tailored to your
+              unique needs.
+            </p>
           </aside>
 
-          <nav>
+          <nav className="text-center">
             <h6 className="footer-title">Company</h6>
             <a className="link link-hover">About us</a>
-            <a className="link link-hover">Contact</a>
-            <a className="link link-hover">Jobs</a>
-            <a className="link link-hover">Press kit</a>
+            <a className="link link-hover">Trainers</a>
+            <a className="link link-hover">Classes</a>
+            <a className="link link-hover">Forums</a>
           </nav>
           <nav>
             <h6 className="footer-title">Social</h6>

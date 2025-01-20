@@ -21,6 +21,7 @@ const ApplicantDetails = () => {
       return res.data;
     },
   });
+  // console.log(singleApplicant);
   if (isLoading) return <Loading></Loading>;
   const {
     name,
@@ -33,14 +34,13 @@ const ApplicantDetails = () => {
     socialIcons,
     biography,
   } = singleApplicant;
-  const trainerInfo = {
-    ...singleApplicant,
-  };
-  //   console.log(singleApplicant._id);
+
+  const { _id, ...restTrainerInfo } = singleApplicant;
+  console.log(restTrainerInfo);
   const handleAccept = async () => {
     try {
       await axiosSecure.patch(`user/${email}`);
-      await axiosSecure.post(`/trainers/${email}`, trainerInfo);
+      await axiosSecure.post(`/trainers/${email}`, restTrainerInfo);
       await axiosSecure.delete(`/new-trainrs/${singleApplicant._id}`);
       navigate("/dashboard/applliedTrainer");
       toast.success("Successfuly Update.👍");
