@@ -55,7 +55,10 @@ const Navbars = () => {
   const dropDownLinks = (
     <>
       <li>
-        <Link className="font-bold mb-2 text-[18px hover:cursor-default">
+        <Link
+          to="/dashboard/profile"
+          className="font-bold mb-2 text-[18px hover:cursor-default"
+        >
           {user?.displayName}
         </Link>
       </li>

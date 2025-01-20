@@ -4,6 +4,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import SectionTitle from "../../components/shared/SectionTitle";
 import Loading from "../../components/shared/Loading";
+import { Link } from "react-router-dom";
 
 const Classes = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -19,13 +20,14 @@ const Classes = () => {
       );
       return data;
     },
+    keepPreviousData: true,
   });
   if (isLoading) return <Loading></Loading>;
-  console.log(data);
+  console.log(data?.classes);
 
   const totalClass = data?.totalClasses || 0;
   const numOfPage = Math.ceil(totalClass / classesPerPage) || 1;
-  console.log(totalClass, numOfPage);
+  // console.log(totalClass, numOfPage);
   const pages = [...Array(numOfPage).keys()];
 
   const handlePageChange = (page) => {
@@ -81,7 +83,27 @@ const Classes = () => {
                   </div>
                 </h2>
                 <p>{item?.details}</p>
-                {/* <p>{item?.trainerId}</p> */}
+                <div>
+                  <h2 className="text-xl font-semibold">Trainers:</h2>
+                  {Array.isArray(item?.trainerId) &&
+                  item?.trainerId.length > 0 ? (
+                    item.trainerId.map((trainer) => (
+                      <div
+                        className="my-2 inline-block mx-1"
+                        key={trainer?.value}
+                      >
+                        <Link
+                          to={`/allTrainer/${trainer?.value}`}
+                          className=" border-2 bg-orange-700 border-none text-white transition-all hover:bg-orange-500 hover:text-white hover:border-none px-2 py-1"
+                        >
+                          {trainer?.label}
+                        </Link>
+                      </div>
+                    ))
+                  ) : (
+                    <p>No trainers available</p>
+                  )}
+                </div>
               </div>
             </div>
           ))}

@@ -156,7 +156,7 @@ const Register = () => {
                 </button>
               </div>
 
-              <p className="text-center ">
+              <p className="text-center mt-2 ">
                 Already have an account? Please{" "}
                 <Link className="text-red-500" to="/login">
                   Login

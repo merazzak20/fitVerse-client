@@ -11,7 +11,7 @@ const BeATrainer = () => {
   return (
     <div
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url(${heroImg})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${heroImg})`,
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -22,7 +22,7 @@ const BeATrainer = () => {
       <Container>
         <div className=" mx-auto text-center flex items-center justify-evenly">
           <div className="w-full">
-            <h2 className="text-white text-4xl font-bold mb-4">
+            <h2 className="text-white text-4xl font-bold mb-4 drop-shadow-lg">
               Are You Ready To?
             </h2>
             <button

@@ -38,7 +38,7 @@ const TrainerDetails = () => {
             <img
               src={trainer?.image}
               alt={trainer?.name}
-              className="mx-auto mb-4"
+              className="mx-auto mb-4 max-h-[500px] object-cover max-w-full"
             />
             <h2 className="text-4xl font-bold  mb-2">{trainer?.name}</h2>
             <p className=" text-orange-600 font-semibold text-xl ">

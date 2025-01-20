@@ -50,6 +50,7 @@ const AddClasses = () => {
 
     try {
       await axiosSecure.post("/classes", classInfo);
+      form.reset();
       toast.success("Successfuly Add.👍");
     } catch (err) {
       toast.error(err.message);

@@ -19,6 +19,7 @@ const MyBooking = () => {
       return res.data;
     },
   });
+  console.log(mybooking);
 
   return (
     <div className="w-11/12 mx-auto">
@@ -62,13 +63,13 @@ const MyBooking = () => {
                     <img
                       className="hover:scale-110 
                 transition h-60 w-full object-cover"
-                      src={item?.trainerClasses?.image}
+                      src={item?.image}
                       alt="image"
                     />
                   </figure>
                   <div className="card-body">
-                    <h2 className="card-title">{item?.trainerClasses?.name}</h2>
-                    <p>{item?.trainerClasses?.details}</p>
+                    <h2 className="card-title">{item?.name}</h2>
+                    <p>{item?.details}</p>
                   </div>
                 </div>
               ))}

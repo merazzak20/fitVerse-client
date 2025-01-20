@@ -25,7 +25,7 @@ const AllForums = () => {
 
   const totalForum = data?.totalForums || 0;
   const numOfPage = Math.ceil(totalForum / forumPerPage) || 1;
-  console.log(totalForum, numOfPage);
+  // console.log(totalForum, numOfPage);
   const pages = [...Array(numOfPage).keys()];
 
   const handlePageChange = (page) => {

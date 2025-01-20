@@ -49,14 +49,14 @@ const Profile = () => {
           </div>
 
           {/* Action Buttons */}
-          <div className="mt-6 space-y-4 w-full text-center">
+          {/* <div className="mt-6 space-y-4 w-full text-center">
             <button className="w-full bg-orange-500 px-6 py-3 rounded-lg text-white cursor-pointer hover:bg-orange-800 text-lg">
               Update Profile
             </button>
             <button className="w-full bg-orange-500 px-6 py-3 rounded-lg text-white cursor-pointer hover:bg-orange-800 text-lg">
               Change Password
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

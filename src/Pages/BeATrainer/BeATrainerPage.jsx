@@ -15,7 +15,7 @@ const BeATrainerPage = () => {
   console.log(user);
   const [formData, setFormData] = useState({
     availableTime: [],
-    availableTime: [],
+    // availableTime: [],
     skills: [],
   });
 

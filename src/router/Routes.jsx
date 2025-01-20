@@ -27,6 +27,8 @@ import AddClasses from "../Pages/Dashboard/Admin/AddClasses.jsx";
 import AddSlot from "../Pages/Dashboard/Trainer/AddSlot.jsx";
 import AddForum from "../Pages/Dashboard/Trainer/AddForum.jsx";
 import AllForums from "../Pages/Forums/AllForums.jsx";
+import AdminRouter from "./AdminRouter.jsx";
+import TrainerRouter from "./TrainerRouter.jsx";
 
 export const Routers = createBrowserRouter([
   {
@@ -111,64 +113,136 @@ export const Routers = createBrowserRouter([
       // Admin Route
       {
         path: "allSubscriber",
-        element: <AllSubscriber></AllSubscriber>,
+        element: (
+          <PrivateRouter>
+            <AdminRouter>
+              <AllSubscriber></AllSubscriber>
+            </AdminRouter>
+          </PrivateRouter>
+        ),
       },
       {
         path: "adminAllTrainer",
-        element: <AdminAllTrainer></AdminAllTrainer>,
+        element: (
+          <PrivateRouter>
+            <AdminRouter>
+              <AdminAllTrainer></AdminAllTrainer>
+            </AdminRouter>
+          </PrivateRouter>
+        ),
       },
       {
         path: "applliedTrainer",
-        element: <AppliedTrainer></AppliedTrainer>,
+        element: (
+          <PrivateRouter>
+            <AdminRouter>
+              <AppliedTrainer></AppliedTrainer>
+            </AdminRouter>
+          </PrivateRouter>
+        ),
       },
       {
         path: "applliedTrainer/:id",
-        element: <ApplicantDetails></ApplicantDetails>,
+        element: (
+          <PrivateRouter>
+            <AdminRouter>
+              <ApplicantDetails></ApplicantDetails>
+            </AdminRouter>
+          </PrivateRouter>
+        ),
       },
       {
         path: "statistics",
-        element: <Statistics></Statistics>,
+        element: (
+          <PrivateRouter>
+            <AdminRouter>
+              <Statistics></Statistics>
+            </AdminRouter>
+          </PrivateRouter>
+        ),
       },
       {
         path: "addClasses",
-        element: <AddClasses></AddClasses>,
+        element: (
+          <PrivateRouter>
+            <AdminRouter>
+              <AddClasses></AddClasses>
+            </AdminRouter>
+          </PrivateRouter>
+        ),
       },
       {
         path: "adminAddForum",
-        element: <AddForum></AddForum>,
+        element: (
+          <PrivateRouter>
+            <AddForum></AddForum>
+          </PrivateRouter>
+        ),
       },
 
       // Trainer
       {
         path: "manageSlots",
-        element: <ManageSlots></ManageSlots>,
+        element: (
+          <PrivateRouter>
+            <TrainerRouter>
+              <ManageSlots></ManageSlots>
+            </TrainerRouter>
+          </PrivateRouter>
+        ),
       },
       {
         path: "addSlots",
-        element: <AddSlot></AddSlot>,
+        element: (
+          <PrivateRouter>
+            <TrainerRouter>
+              <AddSlot></AddSlot>
+            </TrainerRouter>
+          </PrivateRouter>
+        ),
       },
       {
         path: "addForum",
-        element: <AddForum></AddForum>,
+        element: (
+          <PrivateRouter>
+            <AddForum></AddForum>
+          </PrivateRouter>
+        ),
       },
 
       // Member
       {
         path: "paymentHistory",
-        element: <PaymentHistory></PaymentHistory>,
+        element: (
+          <PrivateRouter>
+            <PaymentHistory></PaymentHistory>
+          </PrivateRouter>
+        ),
       },
       {
         path: "myBooking",
-        element: <MyBooking></MyBooking>,
+        element: (
+          <PrivateRouter>
+            <MyBooking></MyBooking>
+          </PrivateRouter>
+        ),
       },
       {
         path: "memberToTrainer",
-        element: <TrainerApplication></TrainerApplication>,
+        element: (
+          <PrivateRouter>
+            <TrainerApplication></TrainerApplication>
+          </PrivateRouter>
+        ),
       },
 
       {
         path: "profile",
-        element: <Profile></Profile>,
+        element: (
+          <PrivateRouter>
+            <Profile></Profile>
+          </PrivateRouter>
+        ),
       },
     ],
   },
