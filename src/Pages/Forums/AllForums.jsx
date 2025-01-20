@@ -59,7 +59,7 @@ const AllForums = () => {
         <div className="text-center">
           <SectionTitle heading={"All Forums"}></SectionTitle>
         </div>
-        <div className="grid grid-cols-2 gap-10">
+        <div className="grid lg:grid-cols-2 gap-10">
           {data?.forums?.map((forum) => (
             <div
               className="border-orange-200 border p-4 rounded-md"
@@ -157,6 +157,8 @@ const AllForums = () => {
             </div>
           ))}
         </div>
+
+        {/* Pagination */}
         <div className="text-center my-10">
           {pages.map((page) => (
             <button

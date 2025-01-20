@@ -42,10 +42,24 @@ const Feedback = () => {
             cssMode={true}
             slidesPerView={2}
             loop={true}
-            autoplay={true}
             navigation={true}
             mousewheel={true}
             keyboard={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            breakpoints={{
+              230: {
+                slidesPerView: 1,
+              },
+              768: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            }}
             modules={[Navigation, Pagination, Mousewheel, Keyboard]}
             className="mySwiper"
           >

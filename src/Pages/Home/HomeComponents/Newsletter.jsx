@@ -24,7 +24,7 @@ const Newsletter = () => {
   return (
     <div className="bg-zinc-800 py-10">
       <Container>
-        <div className=" mx-auto text-center flex items-center justify-evenly">
+        <div className=" mx-auto flex-col md:flex-row text-center flex items-center justify-evenly">
           <div className="w-full">
             <h2 className="text-white text-2xl font-semibold mb-4">
               Subscribe to our Newsletter
