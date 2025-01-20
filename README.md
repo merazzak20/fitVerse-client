@@ -43,4 +43,4 @@ At FitVerse, we believe fitness is more than a routine—it's a lifestyle. Our m
 
 ## Live Link -
 
-- **Example:** [https://artifactarc.com](https://b10-a11-61a37.web.app/)
+- **Example:** [https://fitverse.com](https://fitverse-3d254.web.app/)
