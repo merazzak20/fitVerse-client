@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import { IoIosLogOut } from "react-icons/io";
@@ -12,7 +12,28 @@ import logo from "../../../assets/logo.png";
 const Navbars = () => {
   const [isHovered, setIsHovered] = useState(false);
   const { user, logOut, loading } = useAuth();
-  console.log(user?.photoURL);
+  // console.log(user?.photoURL);
+
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
+
+  // update state on toggle
+  const handleToggle = (e) => {
+    if (e.target.checked) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  };
+
+  // set theme state in localstorage on mount & also update localstorage on state change
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    // add custom data-theme attribute to html tag required to update theme using DaisyUI
+    document.querySelector("html").setAttribute("data-theme", localTheme);
+  }, [theme]);
 
   const handleSignOut = async () => {
     await logOut()
@@ -116,14 +137,16 @@ const Navbars = () => {
           <div className="navbar-end">
             <button className="btn btn-square btn-ghost mr-4">
               <label className="swap swap-rotate w-12 h-12">
-                <input type="checkbox" />
-                {/* light theme sun image */}
-                {/* <img src={sun} alt="light" className="w-8 h-8 swap-on" />
-                 */}
-                <FaSun className="w-8 h-8 swap-on"></FaSun>
+                <input
+                  type="checkbox"
+                  onChange={handleToggle}
+                  // show toggle image based on localstorage theme
+                  checked={theme === "light" ? false : true}
+                />
                 {/* dark theme moon image */}
-                {/* <img src={moon} alt="dark" className="w-8 h-8 swap-off" /> */}
                 <FaMoon className="w-8 h-8 swap-off"></FaMoon>
+                {/* light theme sun image */}
+                <FaSun className="w-8 h-8 swap-on"></FaSun>
               </label>
             </button>
             <div className="dropdown dropdown-end">
