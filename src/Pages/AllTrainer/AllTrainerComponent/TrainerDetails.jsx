@@ -34,7 +34,7 @@ const TrainerDetails = () => {
         {/* Layout with Two Sections */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
           {/* Trainer Info Section */}
-          <div className="bg-white p-6">
+          <div className=" p-6">
             <img
               src={trainer?.image}
               alt={trainer?.name}
@@ -44,11 +44,11 @@ const TrainerDetails = () => {
             <p className=" text-orange-600 font-semibold text-xl ">
               {trainer?.experience} years of experience
             </p>
-            <p className="text-gray-700  mb-4">{trainer?.biography}</p>
+            <p className=" mb-4">{trainer?.biography}</p>
             <div className="">
               <h3 className="text-xl font-semibold mb-2">
                 Expertise:
-                <ul className="list-disc list-inside text-gray-700 mt-2">
+                <ul className="list-disc list-inside  mt-2">
                   {trainer?.skills?.map((skill, index) => (
                     <li key={index}>{skill}</li>
                   ))}
@@ -69,7 +69,7 @@ const TrainerDetails = () => {
           </div>
 
           {/* Available Slots Section */}
-          <div className="bg-white p-6 md:pt-20">
+          <div className=" p-6 md:pt-20">
             <h2 className="text-2xl font-bold mb-4">Available Slots:</h2>
             <div className="grid grid-cols-2 gap-4">
               {trainer?.availableTime?.map((time, index) => (
