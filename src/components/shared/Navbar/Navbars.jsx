@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import { IoIosLogOut } from "react-icons/io";
-import { FaRegUserCircle } from "react-icons/fa";
+import { FaMoon, FaRegUserCircle, FaSun } from "react-icons/fa";
 import Container from "../../Container";
 import userIcon from "../../../assets/user.png";
 import useAuth from "../../../hooks/useAuth";
@@ -114,6 +114,18 @@ const Navbars = () => {
             <ul className="menu menu-horizontal px-1">{links}</ul>
           </div>
           <div className="navbar-end">
+            <button className="btn btn-square btn-ghost mr-4">
+              <label className="swap swap-rotate w-12 h-12">
+                <input type="checkbox" />
+                {/* light theme sun image */}
+                {/* <img src={sun} alt="light" className="w-8 h-8 swap-on" />
+                 */}
+                <FaSun className="w-8 h-8 swap-on"></FaSun>
+                {/* dark theme moon image */}
+                {/* <img src={moon} alt="dark" className="w-8 h-8 swap-off" /> */}
+                <FaMoon className="w-8 h-8 swap-off"></FaMoon>
+              </label>
+            </button>
             <div className="dropdown dropdown-end">
               <div
                 tabIndex={0}
