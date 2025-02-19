@@ -89,12 +89,10 @@ const AllForums = () => {
               </div>
 
               {/* Title */}
-              <h1 className="text-2xl font-bold text-gray-800 mt-6">
-                {forum?.title}
-              </h1>
+              <h1 className="text-2xl font-bold mt-6">{forum?.title}</h1>
 
               {/* Description */}
-              <p className="text-gray-700 text-justify mt-4 leading-relaxed">
+              <p className="text-justify mt-4 leading-relaxed">
                 {forum?.description}
               </p>
 
